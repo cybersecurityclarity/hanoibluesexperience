@@ -1,1 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HBX — Hanoi Blues Experience 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #000000;
+      --red: #DA251D;
+      --white: #FFFFFF;
+      --gold: #FFCD00;
+      --red-dark: #a01915;
+      --gray: #1a1a1a;
+      --gray-mid: #2e2e2e;
+      --text-muted: #999;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; }
 
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1rem 2.5rem; background: rgba(0,0,0,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(218,37,29,0.3); transition: padding 0.3s; }
+    nav.scrolled { padding: 0.55rem 2.5rem; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--gold); letter-spacing: 0.05em; text-decoration: none; white-space: nowrap; }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; gap: 1.4rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--white); text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 100%; height: 1px; background: var(--red); transition: right 0.3s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { right: 0; }
+    .nav-cta { background: var(--red); color: var(--white) !important; padding: 0.38rem 1rem; border-radius: 2px; }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--red-dark) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); }
+
+    /* HERO */
+    #home { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 6rem 2rem 4rem; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(218,37,29,0.13) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 20% 80%, rgba(255,205,0,0.06) 0%, transparent 60%); }
+    .hero-bg::before { content: '★'; position: absolute; font-size: 30rem; color: rgba(255,205,0,0.025); top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; line-height: 1; }
+    .hero-lines { position: absolute; inset: 0; pointer-events: none; }
+    .hero-lines::before, .hero-lines::after { content: ''; position: absolute; height: 1px; width: 40%; background: linear-gradient(90deg, transparent, var(--red), transparent); opacity: 0.4; }
+    .hero-lines::before { top: 35%; left: 5%; animation: shimmer 4s infinite; }
+    .hero-lines::after { bottom: 35%; right: 5%; animation: shimmer 4s 2s infinite; }
+    @keyframes shimmer { 0%,100%{opacity:0.2} 50%{opacity:0.6} }
+    .hero-content { position: relative; z-index: 1; max-width: 920px; }
+    .hero-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; }
+    .hero-eyebrow::before, .hero-eyebrow::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--gold); opacity: 0.5; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 9vw, 7.5rem); font-weight: 900; line-height: 0.92; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+    .hero-title .t1 { display: block; color: var(--white); }
+    .hero-title .t2 { display: block; color: var(--red); font-style: italic; }
+    .hero-title .t3 { display: block; color: var(--gold); font-size: 0.42em; letter-spacing: 0.08em; font-style: normal; margin-top: 0.4em; font-weight: 700; }
+    .hero-meta { display: flex; align-items: center; justify-content: center; gap: 1.4rem; margin: 2rem 0; font-family: 'Barlow Condensed', sans-serif; font-size: 0.92rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); flex-wrap: wrap; }
+    .hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
+    .hero-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--red); }
+    .hero-stats { display: flex; justify-content: center; gap: 3rem; margin: 2.5rem 0; flex-wrap: wrap; }
+    .hero-stat { text-align: center; }
+    .hero-stat .num { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .hero-stat .label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.3rem; }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+    .btn-primary { display: inline-block; background: var(--red); color: var(--white); padding: 0.9rem 2.4rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
+    .btn-secondary { display: inline-block; border: 1px solid rgba(255,255,255,0.3); color: var(--white); padding: 0.9rem 2.4rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.2s; }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; animation: bounce 2s infinite; }
+    .scroll-hint::after { content: '↓'; font-size: 1rem; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+    /* SECTIONS */
+    section { padding: 5.5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 0.75rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.1; }
+    .section-title em { color: var(--gold); font-style: italic; }
+    .section-line { width: 55px; height: 2px; background: var(--red); margin: 1.4rem auto 0; }
+    .section-subtitle { margin-top: 1rem; color: var(--text-muted); max-width: 580px; margin-left: auto; margin-right: auto; font-size: 0.92rem; }
+
+    /* ABOUT */
+    #about { background: var(--gray); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-text h3 { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem; }
+    .about-text p { color: rgba(255,255,255,0.75); margin-bottom: 1rem; font-size: 0.93rem; }
+    .about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 2rem; }
+    .value-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 1.3rem; transition: border-color 0.3s; }
+    .value-card:hover { border-color: rgba(218,37,29,0.4); }
+    .value-card .icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+    .value-card h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+    .value-card p { font-size: 0.8rem; color: var(--text-muted); margin: 0; }
+    .notice-box { background: rgba(218,37,29,0.08); border: 1px solid rgba(218,37,29,0.3); padding: 1rem 1.4rem; margin-top: 1.5rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; letter-spacing: 0.04em; color: rgba(255,255,255,0.7); }
+    .notice-box strong { color: var(--gold); }
+    .notice-box a { color: var(--gold); }
+    .about-image-placeholder { width: 100%; aspect-ratio: 3/4; background: var(--gray-mid); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif; letter-spacing: 0.1em; font-size: 0.82rem; text-transform: uppercase; position: relative; }
+    .about-image-placeholder::before { content: ''; position: absolute; top: -8px; left: -8px; width: 55px; height: 55px; border-top: 2px solid var(--red); border-left: 2px solid var(--red); }
+    .about-image-placeholder::after { content: ''; position: absolute; bottom: -8px; right: -8px; width: 55px; height: 55px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+    .placeholder-icon { font-size: 3rem; opacity: 0.22; }
+
+    /* PEOPLE */
+    .people-tabs { display: flex; gap: 0; margin-bottom: 3rem; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .tab-btn { background: none; border: none; color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; padding: 0.7rem 1.8rem; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; }
+    .tab-btn.active { color: var(--gold); border-bottom-color: var(--red); }
+    .tab-btn:hover:not(.active) { color: var(--white); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .people-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 2rem; }
+    .person-card { text-align: center; transition: transform 0.3s; }
+    .person-card:hover { transform: translateY(-4px); }
+    .person-photo { width: 100%; aspect-ratio: 1; background: var(--gray-mid); border: 1px solid rgba(255,255,255,0.08); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; position: relative; overflow: hidden; font-family: 'Barlow Condensed', sans-serif; }
+    .person-photo::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--red), var(--gold)); transform: scaleX(0); transition: transform 0.3s; }
+    .person-card:hover .person-photo::after { transform: scaleX(1); }
+    .person-photo .ph-icon { font-size: 2.5rem; opacity: 0.18; }
+    .person-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .person-role { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .person-from { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem; }
+    .person-note { font-size: 0.74rem; color: var(--red); margin-top: 0.2rem; font-style: italic; }
+    .judges-strip { margin-top: 3rem; padding: 1.4rem 2rem; background: rgba(255,205,0,0.05); border: 1px solid rgba(255,205,0,0.2); display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .judges-strip h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+    .judge-list { font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; letter-spacing: 0.05em; color: rgba(255,255,255,0.75); }
+
+    /* SCHEDULE */
+    #schedule { background: var(--gray); }
+    .day-tabs { display: flex; gap: 0; margin-bottom: 2.5rem; justify-content: center; }
+    .day-btn { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; padding: 0.9rem 1.8rem; cursor: pointer; transition: all 0.2s; border-right: none; }
+    .day-btn:last-child { border-right: 1px solid rgba(255,255,255,0.08); }
+    .day-btn.active { background: var(--red); color: var(--white); border-color: var(--red); }
+    .day-btn:hover:not(.active) { background: rgba(255,255,255,0.06); color: var(--white); }
+    .music-legend { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.5rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; color: var(--text-muted); }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .ld-dj { background: #6dcff5; }
+    .ld-band { background: #b49ef5; }
+    .ld-comp { background: #ccc; }
+    .ld-social { background: var(--gold); }
+    .schedule-list { display: flex; flex-direction: column; gap: 0; max-width: 820px; margin: 0 auto; }
+    .schedule-item { display: grid; grid-template-columns: 130px 1fr auto; gap: 1.5rem; align-items: start; padding: 1.05rem 0.5rem 1.05rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.2s, padding-left 0.2s; }
+    .schedule-item:hover { background: rgba(255,255,255,0.02); padding-left: 0.5rem; }
+    .sched-time { font-family: 'Barlow Condensed', sans-serif; font-size: 0.77rem; letter-spacing: 0.04em; color: var(--text-muted); padding-top: 0.15rem; line-height: 1.4; }
+    .sched-info h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.04rem; font-weight: 600; letter-spacing: 0.04em; margin-bottom: 0.12rem; }
+    .sched-info p { font-size: 0.79rem; color: var(--text-muted); }
+    .sched-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 2px; white-space: nowrap; margin-top: 0.1rem; font-weight: 600; }
+    .tag-class { background: rgba(218,37,29,0.18); color: #f88; border: 1px solid rgba(218,37,29,0.3); }
+    .tag-social { background: rgba(255,205,0,0.13); color: var(--gold); border: 1px solid rgba(255,205,0,0.3); }
+    .tag-comp { background: rgba(255,255,255,0.05); color: #ccc; border: 1px solid rgba(255,255,255,0.15); }
+    .tag-food { background: rgba(80,200,80,0.1); color: #7dda7d; border: 1px solid rgba(80,200,80,0.2); }
+    .tag-band { background: rgba(120,80,220,0.15); color: #b49ef5; border: 1px solid rgba(120,80,220,0.3); }
+    .tag-dj { background: rgba(40,160,220,0.12); color: #6dcff5; border: 1px solid rgba(40,160,220,0.3); }
+    .tag-private { background: rgba(255,255,255,0.04); color: var(--text-muted); border: 1px solid rgba(255,255,255,0.08); }
+
+    /* COMPETITIONS */
+    .comps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.8rem; }
+    .comp-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 2rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
+    .comp-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--red), var(--gold)); }
+    .comp-card:hover { border-color: rgba(218,37,29,0.4); transform: translateY(-3px); }
+    .comp-icon { font-size: 1.8rem; margin-bottom: 0.9rem; }
+    .comp-card h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.55rem; }
+    .comp-card p { font-size: 0.84rem; color: rgba(255,255,255,0.62); line-height: 1.6; margin-bottom: 0.8rem; }
+    .comp-details { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; letter-spacing: 0.04em; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1rem; margin-top: 0.8rem; line-height: 1.9; }
+    .comp-details strong { color: var(--gold); font-weight: 600; }
+    .comp-dj-strip { margin-top: 2rem; padding: 1.3rem 2rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); text-align: center; font-size: 0.88rem; color: var(--text-muted); }
+    .comp-dj-strip strong { color: var(--white); }
+
+    /* VENUES */
+    #venues { background: var(--gray); }
+    .venues-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+    .venue-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; transition: border-color 0.3s; }
+    .venue-card:hover { border-color: rgba(218,37,29,0.35); }
+    .venue-img { width: 100%; aspect-ratio: 16/9; background: var(--gray-mid); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .venue-img .ph-icon { font-size: 2rem; opacity: 0.22; }
+    .venue-body { padding: 1.5rem; }
+    .venue-body h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .venue-body .venue-type { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.7rem; }
+    .venue-body p { font-size: 0.84rem; color: var(--text-muted); }
+    .venue-address { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; color: var(--gold); margin-top: 0.7rem; display: flex; align-items: center; gap: 0.4rem; }
+    .venue-days { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); margin-top: 0.35rem; }
+    .sunday-special { background: rgba(255,205,0,0.05); border: 1px solid rgba(255,205,0,0.2); padding: 2rem; margin-bottom: 3rem; text-align: center; }
+    .sunday-special h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .sunday-special p { font-size: 0.88rem; color: rgba(255,255,255,0.7); max-width: 620px; margin: 0 auto; }
+    .food-section h3 { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 1.8rem; text-align: center; }
+    .food-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.4rem; }
+    .food-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); padding: 1.4rem; text-align: center; transition: border-color 0.3s; }
+    .food-card:hover { border-color: rgba(255,205,0,0.3); }
+    .food-card .icon { font-size: 1.9rem; margin-bottom: 0.7rem; }
+    .food-card h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 0.35rem; }
+    .food-card p { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* REGISTRATION */
+    #registration { background: var(--black); position: relative; overflow: hidden; }
+    #registration::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(218,37,29,0.1) 0%, transparent 60%); }
+    .reg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; z-index: 1; }
+    .reg-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.09); padding: 2.2rem 1.8rem; text-align: center; position: relative; transition: transform 0.3s, border-color 0.3s; }
+    .reg-card:hover { transform: translateY(-5px); border-color: rgba(218,37,29,0.4); }
+    .reg-card.featured { border-color: var(--red); background: rgba(218,37,29,0.07); }
+    .reg-card.featured::before { content: 'Most Popular'; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--red); color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.28rem 1rem; font-weight: 600; }
+    .reg-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .reg-price { font-family: 'Playfair Display', serif; font-size: 2.3rem; font-weight: 900; color: var(--gold); margin: 0.9rem 0; }
+    .reg-price span { font-size: 1.1rem; font-weight: 400; }
+    .reg-desc { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 1.4rem; }
+    .reg-features { list-style: none; text-align: left; margin-bottom: 1.8rem; display: flex; flex-direction: column; gap: 0.55rem; }
+    .reg-features li { font-size: 0.83rem; color: rgba(255,255,255,0.7); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .reg-features li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 0.05em; }
+    .privates-note { margin-top: 2.5rem; padding: 1.5rem 2rem; background: rgba(255,205,0,0.05); border: 1px solid rgba(255,205,0,0.2); text-align: center; position: relative; z-index: 1; }
+    .privates-note h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .privates-note p { font-size: 0.84rem; color: rgba(255,255,255,0.65); max-width: 620px; margin: 0 auto; }
+
+    /* PLAYLISTS */
+    #playlists { background: var(--black); }
+    .playlist-intro { max-width: 700px; margin: 0 auto 3rem; text-align: center; font-size: 0.92rem; color: rgba(255,255,255,0.7); }
+    .playlist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+    .playlist-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 2rem; position: relative; transition: border-color 0.3s, transform 0.3s; }
+    .playlist-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--red), var(--gold)); }
+    .playlist-card:hover { border-color: rgba(255,205,0,0.35); transform: translateY(-3px); }
+    .playlist-level { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; display: inline-block; margin-bottom: 1rem; font-weight: 600; }
+    .level-beginner { background: rgba(80,200,80,0.12); color: #7dda7d; border: 1px solid rgba(80,200,80,0.25); }
+    .level-intermediate { background: rgba(255,205,0,0.12); color: var(--gold); border: 1px solid rgba(255,205,0,0.25); }
+    .level-advanced { background: rgba(218,37,29,0.15); color: #f88; border: 1px solid rgba(218,37,29,0.3); }
+    .level-mood { background: rgba(120,80,220,0.13); color: #b49ef5; border: 1px solid rgba(120,80,220,0.25); }
+    .playlist-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .playlist-card p { font-size: 0.84rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 1.2rem; }
+    .playlist-tracks { list-style: none; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .playlist-tracks li { font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: flex-start; gap: 0.6rem; }
+    .playlist-tracks li::before { content: '♪'; color: var(--red); flex-shrink: 0; }
+    .track-artist { color: rgba(255,255,255,0.8); font-weight: 500; }
+    .playlist-link { display: inline-block; margin-top: 1.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(255,205,0,0.3); padding-bottom: 2px; transition: border-color 0.2s; }
+    .playlist-link:hover { border-color: var(--gold); }
+    .dj-tips { margin-top: 3.5rem; padding: 2rem; background: rgba(218,37,29,0.05); border: 1px solid rgba(218,37,29,0.2); }
+    .dj-tips h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.2rem; }
+    .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.2rem; }
+    .tip-card { padding: 1.2rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); }
+    .tip-card h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .tip-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* PARTNERS */
+    #partners { background: var(--gray); padding: 4rem 2rem; }
+    .partners-grid { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2.5rem; }
+    .partner-badge { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 1.5rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7); text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+    .partner-badge:hover { border-color: var(--red); color: var(--white); }
+
+    /* FOOTER */
+    footer { background: #040404; border-top: 1px solid rgba(255,255,255,0.07); padding: 4rem 2rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand .logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--gold); display: block; margin-bottom: 0.9rem; }
+    .footer-brand .logo span { color: var(--red); }
+    .footer-brand p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.7; }
+    .footer-brand .social-links { display: flex; gap: 0.8rem; margin-top: 1.4rem; flex-wrap: wrap; }
+    .social-link { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; border: 1px solid rgba(255,255,255,0.1); padding: 0.38rem 0.75rem; transition: border-color 0.2s, color 0.2s; }
+    .social-link:hover { border-color: var(--red); color: var(--white); }
+    .footer-col h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--white); font-weight: 600; margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-col a { font-size: 0.83rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.76rem; color: var(--text-muted); flex-wrap: wrap; gap: 1rem; }
+    .footer-flag { display: flex; align-items: center; gap: 0.75rem; }
+    .flag { width: 28px; height: 18px; background: var(--red); position: relative; flex-shrink: 0; }
+    .flag::before { content: '★'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--gold); font-size: 11px; line-height: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(0,0,0,0.97); padding: 2rem; gap: 1.5rem; border-bottom: 1px solid rgba(218,37,29,0.3); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .about-grid, .venues-grid { grid-template-columns: 1fr; }
+      .reg-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 4rem 1.25rem; }
+      .footer-top { grid-template-columns: 1fr; }
+      .schedule-item { grid-template-columns: 95px 1fr; }
+      .sched-tag { display: none; }
+      .people-grid { grid-template-columns: repeat(2, 1fr); }
+      .comps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">HBX <span>·</span> Hanoi Blues</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#people">Artists</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#competitions">Comps</a></li>
+    <li><a href="#venues">Venues</a></li>
+    <li><a href="#playlists">DJ Playlists</a></li>
+    <li><a href="#registration" class="nav-cta">Register</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Hanoi, Vietnam · January 23–25, 2027</div>
+    <h1 class="hero-title">
+      <span class="t1">Hanoi Blues</span>
+      <span class="t2">Experience</span>
+      <span class="t3">HBX 2027</span>
+    </h1>
+    <div class="hero-meta">
+      <span>📅 Jan 23–25, 2027</span>
+      <span class="dot"></span>
+      <span>📍 Hanoi, Vietnam</span>
+      <span class="dot"></span>
+      <span>🎵 Blues Dance</span>
+      <span class="dot"></span>
+      <span>🎷 Live Band</span>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">3</div><div class="label">Days of Dancing</div></div>
+      <div class="hero-stat"><div class="num">9+</div><div class="label">Instructors & Guests</div></div>
+      <div class="hero-stat"><div class="num">4</div><div class="label">Competitions</div></div>
+      <div class="hero-stat"><div class="num">2</div><div class="label">Venues</div></div>
+    </div>
+    <div class="hero-actions">
+      <a href="#registration" class="btn-primary">Buy Tickets</a>
+      <a href="#about" class="btn-secondary">Learn More</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Our Story</span>
+      <h2 class="section-title">What Is <em>HBX?</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h3>Blues Dance comes to Hanoi</h3>
+        <p>The Hanoi Blues Experience (HBX) is a weekend blues dance event built around community, connection, and the deep feeling of the blues. Set against the backdrop of one of Southeast Asia's most vibrant cities, HBX 2027 brings together dancers, instructors, and DJs from across Asia and beyond for three nights of social dancing, live music, and unforgettable connection.</p>
+        <p>From Friday night socials with a live jazz band at Blake's House of Jazz, to Saturday afternoon workshops and competitions at Hong Mai Ballroom, to a Sunday community picnic on Hanoi Lake — every moment of HBX is designed with you in mind.</p>
+        <div class="notice-box">
+          <strong>📅 Dates to note:</strong> HBX takes place January 23–25, 2027 — the last weekend of January, alongside our friends at <a href="#">Breezy Balboa</a>. Plan to attend both!
+        </div>
+        <div class="about-values">
+          <div class="value-card"><div class="icon">💙</div><h4>Community First</h4><p>Built by and for the Southeast Asian blues dance community.</p></div>
+          <div class="value-card"><div class="icon">🎷</div><h4>Live Music</h4><p>Dance to Blake's Blues Band across multiple sets all weekend.</p></div>
+          <div class="value-card"><div class="icon">🌏</div><h4>Pan-Asian Talent</h4><p>Instructors, DJs, and dancers gathered from across Asia and the world.</p></div>
+          <div class="value-card"><div class="icon">🤝</div><h4>Welcoming & Safe</h4><p>A space built on respect, consent, and the joy of dance.</p></div>
+        </div>
+      </div>
+      <div class="about-image-block">
+        <div class="about-image-placeholder">
+          <div class="placeholder-icon">📷</div>
+          <span>Event Photo</span>
+          <span style="font-size:0.62rem;opacity:0.5">Replace with your image</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PEOPLE -->
+<section id="people">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">The Talent</span>
+      <h2 class="section-title">Artists, <em>DJs &amp; Guests</em></h2>
+      <div class="section-line"></div>
+      <p class="section-subtitle">An international lineup of blues dance instructors, special guests, and DJs — gathered in Hanoi for one unforgettable weekend.</p>
+    </div>
+    <div class="people-tabs">
+      <button class="tab-btn active" onclick="switchTab('instructors', this)">Instructors</button>
+      <button class="tab-btn" onclick="switchTab('guests', this)">Special Guests</button>
+      <button class="tab-btn" onclick="switchTab('djs', this)">DJs</button>
+    </div>
+
+    <!-- Instructors -->
+    <div class="tab-panel active" id="tab-instructors">
+      <div class="people-grid">
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">👤</div><span>Photo</span></div><div class="person-name">Viva</div><div class="person-role">Blues Instructor</div><div class="person-from">[City, Country]</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">👤</div><span>Photo</span></div><div class="person-name">Rocky</div><div class="person-role">Blues Instructor</div><div class="person-from">[City, Country]</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">👤</div><span>Photo</span></div><div class="person-name">Damon</div><div class="person-role">Blues Instructor & Judge</div><div class="person-from">[City, Country]</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">👤</div><span>Photo</span></div><div class="person-name">Kelsy</div><div class="person-role">Blues Instructor, DJ & Judge</div><div class="person-from">[City, Country]</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">👤</div><span>Photo</span></div><div class="person-name">Haksin</div><div class="person-role">Blues Instructor</div><div class="person-from">[City, Country]</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">👤</div><span>Photo</span></div><div class="person-name">Haksin's Choice</div><div class="person-role">Blues Instructor</div><div class="person-from">TBA</div><div class="person-note">Haksin's personal invite</div></div>
+      </div>
+    </div>
+
+    <!-- Special Guests -->
+    <div class="tab-panel" id="tab-guests">
+      <div class="people-grid">
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">⭐</div><span>Photo</span></div><div class="person-name">Youngdo</div><div class="person-role">Special Guest · DJ · Judge</div><div class="person-from">[City, Country]</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">⭐</div><span>Photo</span></div><div class="person-name">Dawa</div><div class="person-role">Special Guest · DJ · Judge</div><div class="person-from">[City, Country]</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">⭐</div><span>Photo</span></div><div class="person-name">Xuan</div><div class="person-role">Special Guest · DJ · Judge</div><div class="person-from">Hanoi, Vietnam</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">⭐</div><span>Photo</span></div><div class="person-name">Sawin</div><div class="person-role">Special Guest · DJ · Judge</div><div class="person-from">[City, Country]</div></div>
+      </div>
+    </div>
+
+    <!-- DJs -->
+    <div class="tab-panel" id="tab-djs">
+      <div class="people-grid">
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">🎧</div><span>Photo</span></div><div class="person-name">Youngdo</div><div class="person-role">DJ</div><div class="person-from">[City, Country]</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">🎧</div><span>Photo</span></div><div class="person-name">Dawa</div><div class="person-role">DJ</div><div class="person-from">[City, Country]</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">🎧</div><span>Photo</span></div><div class="person-name">Xuan</div><div class="person-role">DJ — Late Night Closer</div><div class="person-from">Hanoi, Vietnam</div><div class="person-note">1:30–3:00am Fri &amp; Sat · 23:00 Sun</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">🎧</div><span>Photo</span></div><div class="person-name">Sawin</div><div class="person-role">DJ</div><div class="person-from">[City, Country]</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">🎧</div><span>Photo</span></div><div class="person-name">Yaling</div><div class="person-role">DJ</div><div class="person-from">[City, Country]</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">🎧</div><span>Photo</span></div><div class="person-name">Kelsy</div><div class="person-role">DJ & Instructor</div><div class="person-from">[City, Country]</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">🎧</div><span>Photo</span></div><div class="person-name">Roman</div><div class="person-role">Competition DJ</div><div class="person-from">[City, Country]</div><div class="person-note">All comp prelims &amp; finals</div></div>
+        <div class="person-card"><div class="person-photo"><div class="ph-icon">🎧</div><span>Photo</span></div><div class="person-name">+ More TBA</div><div class="person-role">DJ</div><div class="person-from">Announcements coming soon</div></div>
+      </div>
+    </div>
+
+    <div class="judges-strip">
+      <h4>🏆 Competition Judges</h4>
+      <div class="judge-list">Youngdo · Dawa · Damon · Kelsy · Xuan · Sawin &nbsp;<span style="color:var(--text-muted)">Backup: Viva &amp; Rocky</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Plan Your Weekend</span>
+      <h2 class="section-title">The <em>Schedule</em></h2>
+      <div class="section-line"></div>
+      <p class="section-subtitle">Three days of dancing, live music, workshops, and competitions. All times are Hanoi time (ICT, UTC+7).</p>
+    </div>
+    <div class="music-legend">
+      <div class="legend-item"><div class="legend-dot ld-dj"></div>DJ Set</div>
+      <div class="legend-item"><div class="legend-dot ld-band"></div>Live Band</div>
+      <div class="legend-item"><div class="legend-dot ld-comp"></div>Competition</div>
+      <div class="legend-item"><div class="legend-dot ld-social"></div>Social Dance</div>
+    </div>
+    <div class="day-tabs">
+      <button class="day-btn active" onclick="switchDay('fri', this)">Friday · Jan 23</button>
+      <button class="day-btn" onclick="switchDay('sat', this)">Saturday · Jan 24</button>
+      <button class="day-btn" onclick="switchDay('sun', this)">Sunday · Jan 25</button>
+    </div>
+
+    <!-- FRIDAY -->
+    <div class="schedule-list" id="day-fri">
+      <div class="schedule-item"><div class="sched-time">Evening</div><div class="sched-info"><h4>Opening Social — Blake's House of Jazz</h4><p>2 floors of social dancing · Instructor demo for booking Sunday privates</p></div><span class="sched-tag tag-social">Social</span></div>
+      <div class="schedule-item"><div class="sched-time">20:00 – 21:00</div><div class="sched-info"><h4>DJ Set</h4><p>Opening set — get the floor warmed up</p></div><span class="sched-tag tag-dj">DJ</span></div>
+      <div class="schedule-item"><div class="sched-time">21:00 – 21:45</div><div class="sched-info"><h4>Blake's Blues Band</h4><p>First live set of the weekend</p></div><span class="sched-tag tag-band">Live Band</span></div>
+      <div class="schedule-item"><div class="sched-time">21:45 – 22:15</div><div class="sched-info"><h4>DJ Set</h4><p></p></div><span class="sched-tag tag-dj">DJ</span></div>
+      <div class="schedule-item"><div class="sched-time">22:15 – 23:00</div><div class="sched-info"><h4>Blake's Blues Band</h4><p>Second live set</p></div><span class="sched-tag tag-band">Live Band</span></div>
+      <div class="schedule-item"><div class="sched-time">23:00 – 23:30</div><div class="sched-info"><h4>DJ Set</h4><p></p></div><span class="sched-tag tag-dj">DJ</span></div>
+      <div class="schedule-item"><div class="sched-time">23:30 – 00:30</div><div class="sched-info"><h4>Blake's Blues Band</h4><p>Late night live set</p></div><span class="sched-tag tag-band">Live Band</span></div>
+      <div class="schedule-item"><div class="sched-time">00:30 – 01:30</div><div class="sched-info"><h4>DJ Set</h4><p>Post-band social</p></div><span class="sched-tag tag-dj">DJ</span></div>
+      <div class="schedule-item"><div class="sched-time">01:30 – 03:00</div><div class="sched-info"><h4>Xuan — Closing Set</h4><p>Dance til 3am</p></div><span class="sched-tag tag-dj">DJ</span></div>
+    </div>
+
+    <!-- SATURDAY -->
+    <div class="schedule-list" id="day-sat" style="display:none">
+      <div class="schedule-item"><div class="sched-time">Afternoon</div><div class="sched-info"><h4>Hong Mai Ballroom, 3rd Floor</h4><p>75 Hong Mai · Main competition &amp; workshop venue</p></div><span class="sched-tag tag-private">Venue</span></div>
+      <div class="schedule-item"><div class="sched-time">14:00 – 16:00</div><div class="sched-info"><h4>2-Hour Introductory Workshop</h4><p>Beginner-friendly blues foundations · All welcome · DJ set runs alongside</p></div><span class="sched-tag tag-class">Class</span></div>
+      <div class="schedule-item"><div class="sched-time">16:00 – 17:00</div><div class="sched-info"><h4>Practice Social</h4><p>2 hours open practice floor · DJ music</p></div><span class="sched-tag tag-social">Social</span></div>
+      <div class="schedule-item"><div class="sched-time">17:00 – 18:00</div><div class="sched-info"><h4>Competition Prelims — All 4 Comps</h4><p>DJ: Roman · Newcomer M&amp;M · Slow Blues M&amp;M · Fast Blues M&amp;M · Strictly</p></div><span class="sched-tag tag-comp">Comp</span></div>
+      <div class="schedule-item"><div class="sched-time">18:00 – 20:00</div><div class="sched-info"><h4>Dinner Break</h4><p>Explore Hanoi · Instructor social demo for booking Sunday privates</p></div><span class="sched-tag tag-food">Food</span></div>
+      <div class="schedule-item"><div class="sched-time">20:00 – 21:00</div><div class="sched-info"><h4>DJ Set</h4><p>Saturday evening opening</p></div><span class="sched-tag tag-dj">DJ</span></div>
+      <div class="schedule-item"><div class="sched-time">21:00 – 21:45</div><div class="sched-info"><h4>Blake's Blues Band</h4><p>Live set</p></div><span class="sched-tag tag-band">Live Band</span></div>
+      <div class="schedule-item"><div class="sched-time">21:45 – 22:15</div><div class="sched-info"><h4>Competition Finals — DJ Roman</h4><p>All 4 competition finals · Newcomer · Slow Blues · Fast Blues · Strictly</p></div><span class="sched-tag tag-comp">Comp</span></div>
+      <div class="schedule-item"><div class="sched-time">22:15 – 23:00</div><div class="sched-info"><h4>Blake's Blues Band</h4><p>Post-comp celebration set</p></div><span class="sched-tag tag-band">Live Band</span></div>
+      <div class="schedule-item"><div class="sched-time">23:00 – 23:30</div><div class="sched-info"><h4>DJ Set</h4><p></p></div><span class="sched-tag tag-dj">DJ</span></div>
+      <div class="schedule-item"><div class="sched-time">23:30 – 00:30</div><div class="sched-info"><h4>Blake's Blues Band</h4><p>Late night set</p></div><span class="sched-tag tag-band">Live Band</span></div>
+      <div class="schedule-item"><div class="sched-time">00:30 – 01:30</div><div class="sched-info"><h4>DJ Set</h4><p></p></div><span class="sched-tag tag-dj">DJ</span></div>
+      <div class="schedule-item"><div class="sched-time">01:30 – 03:00</div><div class="sched-info"><h4>Xuan — Closing Set</h4><p>Dance til 3am</p></div><span class="sched-tag tag-dj">DJ</span></div>
+    </div>
+
+    <!-- SUNDAY -->
+    <div class="schedule-list" id="day-sun" style="display:none">
+      <div class="schedule-item"><div class="sched-time">Morning</div><div class="sched-info"><h4>Private Lessons — Book With Instructors</h4><p>First come, first served · Individually priced · 4 raffle winners announced (2 leads + 2 follows from Fri &amp; Sat)</p></div><span class="sched-tag tag-private">Privates</span></div>
+      <div class="schedule-item"><div class="sched-time">12:00 – 16:00</div><div class="sched-info"><h4>Community Picnic &amp; Afternoon Dance</h4><p>Hanoi Lake Circle · Outdoor dancing · Lunch together · Celebrating Blues Dance Hanoi</p></div><span class="sched-tag tag-social">Community</span></div>
+      <div class="schedule-item"><div class="sched-time">Evening</div><div class="sched-info"><h4>Closing Social — Blake's House of Jazz</h4><p>Final night of dancing · Dance til midnight</p></div><span class="sched-tag tag-social">Social</span></div>
+      <div class="schedule-item"><div class="sched-time">20:00 – 21:00</div><div class="sched-info"><h4>DJ Set</h4><p></p></div><span class="sched-tag tag-dj">DJ</span></div>
+      <div class="schedule-item"><div class="sched-time">21:00 – 21:45</div><div class="sched-info"><h4>Blake's Blues Band</h4><p>Live set</p></div><span class="sched-tag tag-band">Live Band</span></div>
+      <div class="schedule-item"><div class="sched-time">21:45 – 22:15</div><div class="sched-info"><h4>DJ Set</h4><p></p></div><span class="sched-tag tag-dj">DJ</span></div>
+      <div class="schedule-item"><div class="sched-time">22:15 – 23:00</div><div class="sched-info"><h4>Blake's Blues Band</h4><p>Final live set of the weekend</p></div><span class="sched-tag tag-band">Live Band</span></div>
+      <div class="schedule-item"><div class="sched-time">23:00 – 23:30</div><div class="sched-info"><h4>Xuan — Special Closing DJ Set</h4><p></p></div><span class="sched-tag tag-dj">DJ</span></div>
+      <div class="schedule-item"><div class="sched-time">23:30 – 00:30</div><div class="sched-info"><h4>Blake's Blues Band — Grand Finale</h4><p>Final set · Dance til midnight</p></div><span class="sched-tag tag-band">Live Band</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITIONS -->
+<section id="competitions">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Show Your Moves</span>
+      <h2 class="section-title">Com<em>petitions</em></h2>
+      <div class="section-line"></div>
+      <p class="section-subtitle">Four competitions — prelims Saturday at 5pm, all finals Saturday evening. Competition DJ: Roman.</p>
+    </div>
+    <div class="comps-grid">
+      <div class="comp-card">
+        <div class="comp-icon">🌱</div>
+        <h3>Newcomer Mix &amp; Match</h3>
+        <p>For dancers who have never finaled in any competition. A welcoming, low-pressure entry point to competing — celebrate your progress and meet new partners on the floor.</p>
+        <div class="comp-details">
+          <strong>Eligibility:</strong> Never finaled in any competition<br>
+          <strong>Format:</strong> Mix &amp; Match (rotating partners)<br>
+          <strong>Prelims:</strong> Sat 17:00 · DJ: Roman<br>
+          <strong>Finals:</strong> Sat evening
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🌙</div>
+        <h3>Open Slow Blues M&amp;M</h3>
+        <p>Where connection, groove, and musicality take center stage. Open to all levels — show the judges your slow blues feeling.</p>
+        <div class="comp-details">
+          <strong>Eligibility:</strong> Open to all<br>
+          <strong>Format:</strong> Mix &amp; Match (rotating partners)<br>
+          <strong>Prelims:</strong> Sat 17:00 · DJ: Roman<br>
+          <strong>Finals:</strong> Sat evening
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">⚡</div>
+        <h3>Open Fast Blues M&amp;M</h3>
+        <p>Turn up the tempo. Fast blues rewards energy, rhythm, and playfulness. Open to all — bring your best boogie and bounce.</p>
+        <div class="comp-details">
+          <strong>Eligibility:</strong> Open to all<br>
+          <strong>Format:</strong> Mix &amp; Match (rotating partners)<br>
+          <strong>Prelims:</strong> Sat 17:00 · DJ: Roman<br>
+          <strong>Finals:</strong> Sat evening
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">💑</div>
+        <h3>Open Strictly</h3>
+        <p>Compete with your own partner. A strictly blues format for established couples to show their chemistry and connection on the floor.</p>
+        <div class="comp-details">
+          <strong>Eligibility:</strong> Open to all partnerships<br>
+          <strong>Format:</strong> Strictly (fixed partner)<br>
+          <strong>Prelims:</strong> Sat 17:00 · DJ: Roman<br>
+          <strong>Finals:</strong> Sat evening
+        </div>
+      </div>
+    </div>
+    <div class="comp-dj-strip">
+      🎧 All competition prelims and finals are spun by <strong>Roman</strong> — our dedicated competition DJ for HBX 2027.
+    </div>
+  </div>
+</section>
+
+<!-- VENUES & FOOD -->
+<section id="venues">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Where To Be</span>
+      <h2 class="section-title">Venues &amp; <em>Food</em></h2>
+      <div class="section-line"></div>
+      <p class="section-subtitle">Two iconic Hanoi spaces, one live band, and a lakeside Sunday to remember.</p>
+    </div>
+    <div class="venues-grid">
+      <div class="venue-card">
+        <div class="venue-img"><div class="ph-icon">🏛️</div><span>Photo Coming Soon</span></div>
+        <div class="venue-body">
+          <div class="venue-type">Main Competition &amp; Workshop Venue</div>
+          <h3>Hong Mai Ballroom</h3>
+          <p>Our main daytime venue — a proper ballroom on the 3rd floor with a spacious dance floor perfect for blues. Home to Saturday workshops, afternoon practice social, all four competition prelims and finals, and the big Saturday night social.</p>
+          <div class="venue-address">📍 75 Hong Mai, Hanoi (3rd Floor)</div>
+          <div class="venue-days">Saturday · Sunday Afternoon (privates)</div>
+        </div>
+      </div>
+      <div class="venue-card">
+        <div class="venue-img"><div class="ph-icon">🎷</div><span>Photo Coming Soon</span></div>
+        <div class="venue-body">
+          <div class="venue-type">Social Venue · Live Music · 2 Floors</div>
+          <h3>Blake's House of Jazz</h3>
+          <p>Two floors of blues dancing in a warm jazz-club atmosphere. Home to Blake's Blues Band playing live throughout Friday and Sunday nights. The perfect setting for late-night social dancing — dance til 3am on Friday, midnight on Sunday.</p>
+          <div class="venue-address">📍 [Blake's Jazz Bar Address, Hanoi]</div>
+          <div class="venue-days">Friday Night · Sunday Night</div>
+        </div>
+      </div>
+    </div>
+    <div class="sunday-special">
+      <h3>☀️ Sunday Community Picnic</h3>
+      <p>Join us Sunday from <strong>12:00–16:00</strong> at <strong>Hanoi Lake Circle</strong> for an outdoor community dance and picnic lunch — open to all, and a chance to share blues dancing with the wider Hanoi community. Presented together with <strong>Blues Dance Hanoi</strong>.</p>
+    </div>
+    <div class="food-section">
+      <h3>Hanoi Food Guide</h3>
+      <div class="food-grid">
+        <div class="food-card"><div class="icon">🍜</div><h4>[Restaurant Name]</h4><p>[Pho, bun bo, or bun cha spot near venue — add name &amp; what to order]</p></div>
+        <div class="food-card"><div class="icon">🥢</div><h4>[Street Food]</h4><p>[Great local street food near Hong Mai or Blake's]</p></div>
+        <div class="food-card"><div class="icon">☕</div><h4>[Coffee Shop]</h4><p>[Egg coffee or ca phe den — morning fuel before workshops]</p></div>
+        <div class="food-card"><div class="icon">🍺</div><h4>[Pre-Party Bar]</h4><p>[Good spot near Blake's for pre-social drinks]</p></div>
+        <div class="food-card"><div class="icon">🌃</div><h4>Late Night Eats</h4><p>Hanoi's night markets and street stalls run late — perfect after 3am dancing.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION -->
+<section id="registration">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Join Us</span>
+      <h2 class="section-title">Get Your <em>Pass</em></h2>
+      <div class="section-line"></div>
+      <p class="section-subtitle">Secure your spot at HBX 2027. Spots are limited — don't miss out.</p>
+    </div>
+    <div class="reg-grid">
+      <div class="reg-card">
+        <h3>Full Weekend Pass</h3>
+        <div class="reg-price"><span>$</span>XXX</div>
+        <p class="reg-desc">The complete HBX experience — all socials, all weekend long.</p>
+        <ul class="reg-features">
+          <li>Friday night social (Blake's)</li>
+          <li>Saturday intro workshop &amp; practice</li>
+          <li>Saturday evening social</li>
+          <li>All 4 competition prelims &amp; finals</li>
+          <li>Sunday closing social (Blake's)</li>
+        </ul>
+        <a href="#" class="btn-secondary" style="display:block;text-align:center">Register — Full Pass</a>
+      </div>
+      <div class="reg-card featured">
+        <h3>Social Pass</h3>
+        <div class="reg-price"><span>$</span>XXX</div>
+        <p class="reg-desc">All three evening socials — dance the nights away.</p>
+        <ul class="reg-features">
+          <li>Friday night social (Blake's)</li>
+          <li>Saturday evening social &amp; comps</li>
+          <li>Sunday closing social (Blake's)</li>
+          <li>Competition spectating</li>
+        </ul>
+        <a href="#" class="btn-primary" style="display:block;text-align:center">Register — Social Pass</a>
+      </div>
+      <div class="reg-card">
+        <h3>Day Pass</h3>
+        <div class="reg-price"><span>$</span>XXX</div>
+        <p class="reg-desc">Pick one day and dive in. Perfect if you can only make part of the weekend.</p>
+        <ul class="reg-features">
+          <li>Saturday: workshop + social + comps</li>
+          <li>Or: Friday or Sunday social only</li>
+          <li>Choose at registration</li>
+        </ul>
+        <a href="#" class="btn-secondary" style="display:block;text-align:center">Register — Day Pass</a>
+      </div>
+    </div>
+    <div class="privates-note">
+      <h4>🎓 Private Lessons — Sunday</h4>
+      <p>Private lessons with our instructors on Sunday are booked and priced individually — outside of your event pass. Instructors market their own privates: reach out early, it's first come first served! <strong>4 raffle winners</strong> (2 leads + 2 follows) drawn from Friday &amp; Saturday attendees receive a complimentary private.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLAYLISTS -->
+<section id="playlists">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">For Up &amp; Coming DJs</span>
+      <h2 class="section-title">Blues Dance <em>Playlists</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <p class="playlist-intro">Learning to DJ blues? This page is a resource for new and developing DJs — curated playlist guides covering tempos, moods, and essential tracks to grow your blues music library and sharpen your skills behind the decks.</p>
+
+    <div class="playlist-grid">
+      <div class="playlist-card">
+        <span class="playlist-level level-beginner">Beginner DJ</span>
+        <h3>Getting Started: Slow Blues</h3>
+        <p>Your foundation. Slow, deeply felt blues tracks that create connection on the floor. Start here to understand the feeling and space of blues dancing.</p>
+        <ul class="playlist-tracks">
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+        </ul>
+        <a href="#" class="playlist-link">View Full Playlist →</a>
+      </div>
+      <div class="playlist-card">
+        <span class="playlist-level level-beginner">Beginner DJ</span>
+        <h3>Getting Started: Fast Blues</h3>
+        <p>Uptempo blues with energy and drive. Learn what makes fast blues danceable — rhythm, bounce, and momentum.</p>
+        <ul class="playlist-tracks">
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+        </ul>
+        <a href="#" class="playlist-link">View Full Playlist →</a>
+      </div>
+      <div class="playlist-card">
+        <span class="playlist-level level-intermediate">Intermediate DJ</span>
+        <h3>The Slow Burn: Late Night Set</h3>
+        <p>For when the room is connected and ready to go deep. These tracks build atmosphere for your most intimate social moments.</p>
+        <ul class="playlist-tracks">
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+        </ul>
+        <a href="#" class="playlist-link">View Full Playlist →</a>
+      </div>
+      <div class="playlist-card">
+        <span class="playlist-level level-intermediate">Intermediate DJ</span>
+        <h3>Building a Set: Arc &amp; Flow</h3>
+        <p>A full social set example — how to open, build energy, peak, and bring the floor back down. Pacing is everything.</p>
+        <ul class="playlist-tracks">
+          <li><span class="track-artist">[Artist Name]</span> — [Opener]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Build]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Peak]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Come down]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Closer]</li>
+        </ul>
+        <a href="#" class="playlist-link">View Full Playlist →</a>
+      </div>
+      <div class="playlist-card">
+        <span class="playlist-level level-advanced">Advanced DJ</span>
+        <h3>Competition Set Essentials</h3>
+        <p>What makes a great competition track? Tested on floors worldwide — clear rhythm, tempo variety, and tracks that inspire musicality.</p>
+        <ul class="playlist-tracks">
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+        </ul>
+        <a href="#" class="playlist-link">View Full Playlist →</a>
+      </div>
+      <div class="playlist-card">
+        <span class="playlist-level level-mood">Mood &amp; Feel</span>
+        <h3>Beyond the Blues: Adjacent Sounds</h3>
+        <p>R&amp;B, soul, gospel-tinged tracks that live in the blues family. For DJs ready to expand their palette and ears.</p>
+        <ul class="playlist-tracks">
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+          <li><span class="track-artist">[Artist Name]</span> — [Track Title]</li>
+        </ul>
+        <a href="#" class="playlist-link">View Full Playlist →</a>
+      </div>
+    </div>
+
+    <div class="dj-tips">
+      <h3>🎛️ DJ Tips for Blues Socials</h3>
+      <div class="tips-grid">
+        <div class="tip-card"><h4>Tempo Awareness</h4><p>Blues dancing spans ~60–160 BPM. Slow blues is 60–90, medium 90–120, fast blues above 120. Mix with intention and awareness of where the floor is.</p></div>
+        <div class="tip-card"><h4>Read the Room</h4><p>Watch the dancers, not your screen. If the floor empties, adjust. Your job is to keep people dancing — not to play your personal favorites.</p></div>
+        <div class="tip-card"><h4>Set Arc</h4><p>Open light, build through the middle, peak two-thirds in, then bring it back for a graceful close. A good set has a story from first to last song.</p></div>
+        <div class="tip-card"><h4>Music Discovery</h4><p>Listen widely — blues, R&amp;B, soul, gospel, boogie. The best blues DJs have deep libraries and bring surprises that still feel like blues.</p></div>
+        <div class="tip-card"><h4>Competition DJing</h4><p>Choose tracks with clear rhythmic cues, variety in tempo, and enough length for judges. Avoid overly complex arrangements that distract from the dancing.</p></div>
+        <div class="tip-card"><h4>Start Small</h4><p>DJ community socials or practice sessions first. Volunteer, get feedback, and build your ear before stepping up to bigger events.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Community &amp; Sponsors</span>
+      <h2 class="section-title">Our <em>Partners</em></h2>
+      <div class="section-line"></div>
+      <p class="section-subtitle">HBX is supported by and proudly celebrates the blues and swing dance community across Asia.</p>
+    </div>
+    <div class="partners-grid">
+      <a href="#" class="partner-badge">Blues People Bangkok</a>
+      <a href="#" class="partner-badge">Blues Dance Hanoi</a>
+      <a href="#" class="partner-badge">Swing Cats Hanoi</a>
+      <a href="#" class="partner-badge">Saigon Swing Cats</a>
+      <a href="#" class="partner-badge">Mix &amp; Match Skirts</a>
+      <a href="#" class="partner-badge">Shoes [Add Partner]</a>
+      <a href="#" class="partner-badge">Hanoi Lindy Weekend</a>
+      <a href="#" class="partner-badge">Breezy Balboa</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo">HBX <span>·</span> Hanoi Blues</span>
+        <p>The Hanoi Blues Experience is a blues dance community event held January 23–25, 2027 in Hanoi, Vietnam. Built to connect dancers, celebrate the blues, and create an unforgettable weekend in one of Asia's most vibrant cities.</p>
+        <div class="social-links">
+          <a href="#" class="social-link">Instagram</a>
+          <a href="#" class="social-link">Facebook</a>
+          <a href="#" class="social-link">Contact</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#registration">Buy Tickets</a></li>
+          <li><a href="#about">About HBX</a></li>
+          <li><a href="#people">Artists</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#competitions">Competitions</a></li>
+          <li><a href="#venues">Venues &amp; Food</a></li>
+          <li><a href="#playlists">DJ Playlists</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Code of Conduct</a></li>
+          <li><a href="#">Private Lessons</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Partners</h4>
+        <ul>
+          <li><a href="#">Blues People Bangkok</a></li>
+          <li><a href="#">Blues Dance Hanoi</a></li>
+          <li><a href="#">Swing Cats Hanoi</a></li>
+          <li><a href="#">Breezy Balboa</a></li>
+          <li><a href="#">Hanoi Lindy Weekend</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2027 Hanoi Blues Experience (HBX). All rights reserved.</span>
+      <div class="footer-flag">
+        <div class="flag"></div>
+        <span>Made with love in Hanoi, Vietnam</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+  function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+  document.querySelectorAll('.nav-links a').forEach(a => { a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')); });
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+  function switchDay(id, btn) {
+    document.querySelectorAll('.schedule-list').forEach(s => s.style.display = 'none');
+    document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('day-' + id).style.display = 'flex';
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
