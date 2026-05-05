@@ -221,24 +221,24 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 0.75rem;
     }
     .expect-list li {
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.78);
-      line-height: 1.55;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.5;
       display: flex;
       align-items: flex-start;
-      gap: 0.65rem;
+      gap: 0.6rem;
     }
     .expect-list li::before {
       content: '★';
       color: var(--gold);
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       flex-shrink: 0;
-      margin-top: 0.3em;
+      margin-top: 0.35em;
     }
-    .expect-list strong { color: var(--white); }
+    .expect-list strong { color: var(--white); font-weight: 700; }
 
     /* ── PEOPLE ── */
     .people-tabs { display: flex; gap: 0; margin-bottom: 3rem; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -471,6 +471,7 @@
       .venues-grid { grid-template-columns: 1fr; }
       .reg-grid { grid-template-columns: 1fr; max-width: 480px; }
       .footer-top { grid-template-columns: 1fr 1fr; }
+      .comps-grid[style] { grid-template-columns: repeat(2,1fr) !important; }
     }
     @media (max-width: 600px) {
       section { padding: 4rem 1.25rem; }
@@ -506,7 +507,6 @@
 <!-- ══ NAV ══ -->
 <nav id="nav">
   <a href="#home" class="nav-logo">HBX <span>-</span> Hanoi Blues Experience</a>
-  <div class="nav-tagline">January 22–24, 2027 &nbsp;·&nbsp; Where good blues dancing, good food and good people connect</div>
   <ul class="nav-links" id="navLinks">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
@@ -566,7 +566,7 @@
       <div class="about-text">
         <h3>Blues Dance comes to Hanoi</h3>
         <p>The Hanoi Blues Experience (HBX) is a weekend blues dance event built around community, connection, and the deep feeling of the blues. Set against the backdrop of one of Southeast Asia's most vibrant cities, HBX 2027 brings together dancers, instructors, and DJs from across Asia and beyond for three nights of social dancing, live music, and unforgettable connection.</p>
-        <p>From Thursday night opening socials to Saturday evening competitions and late-night dancing at Hong Mai Ballroom — every moment of HBX is designed with you in mind.</p>
+        <p>From Friday night opening socials to Sunday evening competitions and late-night dancing at Hong Mai Ballroom — every moment of HBX is designed with you in mind.</p>
         <div class="about-values">
           <div class="value-card"><div class="icon">💙</div><h4>Community First</h4><p>Built by and for the Southeast Asian blues dance community.</p></div>
           <div class="value-card"><div class="icon">🎷</div><h4>Live Music</h4><p>Dance to live blues music across multiple sets all weekend long.</p></div>
@@ -622,7 +622,7 @@
       <div class="mystery-announce">
         🕵️ <strong>Special guests to be announced very soon!</strong> Follow us on <a href="https://www.instagram.com/hanoibluesexperience/" target="_blank" rel="noopener">Instagram</a> to find out who's joining us as a special guest at HBX 2027.
       </div>
-      <div class="people-grid">
+      <div class="people-grid" style="grid-template-columns:repeat(4,1fr);">
         <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Who could it be?</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
         <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Guess who…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
         <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Stay tuned…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
@@ -638,7 +638,7 @@
       <div class="mystery-announce">
         🕵️ <strong>DJ lineup dropping very soon!</strong> Follow us on <a href="https://www.instagram.com/hanoibluesexperience/" target="_blank" rel="noopener">Instagram</a> to find out who'll be keeping the floor moving at HBX 2027.
       </div>
-      <div class="people-grid">
+      <div class="people-grid" style="grid-template-columns:repeat(3,1fr);">
         <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Who could it be?</div><div class="person-role">DJ</div><div class="person-from">TBA</div></div>
         <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Guess who…</div><div class="person-role">DJ</div><div class="person-from">TBA</div></div>
         <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Stay tuned…</div><div class="person-role">DJ</div><div class="person-from">TBA</div></div>
@@ -671,9 +671,9 @@
       <div class="legend-item"><div class="legend-dot ld-social"></div>Social Dance</div>
     </div>
     <div class="day-tabs">
-      <button class="day-btn active" onclick="switchDay('fri', this)">Thursday · Jan 22</button>
-      <button class="day-btn" onclick="switchDay('sat', this)">Friday · Jan 23</button>
-      <button class="day-btn" onclick="switchDay('sun', this)">Saturday · Jan 24</button>
+      <button class="day-btn active" onclick="switchDay('fri', this)">Friday · Jan 22</button>
+      <button class="day-btn" onclick="switchDay('sat', this)">Saturday · Jan 23</button>
+      <button class="day-btn" onclick="switchDay('sun', this)">Sunday · Jan 24</button>
     </div>
 
     <!-- FRIDAY -->
@@ -694,11 +694,11 @@
       <div class="schedule-item"><div class="sched-time">Afternoon</div><div class="sched-info"><h4>Hong Mai Ballroom, 3rd Floor — 75 Hong Mai</h4><p>Workshops, practice, competitions &amp; evening social</p></div><span class="sched-tag tag-private">Venue</span></div>
       <div class="schedule-item"><div class="sched-time">14:00 – 16:00</div><div class="sched-info"><h4>2-Hour Introductory Workshop</h4><p>Beginner-friendly blues foundations · All welcome · DJ set runs alongside</p></div><span class="sched-tag tag-class">Class</span></div>
       <div class="schedule-item"><div class="sched-time">16:00 – 17:00</div><div class="sched-info"><h4>Practice Social</h4><p>Open practice floor · DJ music</p></div><span class="sched-tag tag-social">Social</span></div>
-      <div class="schedule-item"><div class="sched-time">17:00 – 18:00</div><div class="sched-info"><h4>Competition Prelims — All 4 Comps</h4><p>DJ: Roman · Newcomer M&amp;M · Slow Blues M&amp;M · Fast Blues M&amp;M · Strictly</p></div><span class="sched-tag tag-comp">Comp</span></div>
+      <div class="schedule-item"><div class="sched-time">17:00 – 18:00</div><div class="sched-info"><h4>Competition Prelims</h4><p>Open Fast Blues M&amp;M Prelims · Open Strictly Prelims</p></div><span class="sched-tag tag-comp">Comp</span></div>
       <div class="schedule-item"><div class="sched-time">18:00 – 20:00</div><div class="sched-info"><h4>Dinner Break</h4><p>Explore Hanoi · Instructor social demo for booking Sunday privates</p></div><span class="sched-tag tag-food">Food</span></div>
       <div class="schedule-item"><div class="sched-time">20:00 – 21:00</div><div class="sched-info"><h4>DJ Set</h4><p>Saturday evening opening</p></div><span class="sched-tag tag-dj">DJ</span></div>
       <div class="schedule-item"><div class="sched-time">21:00 – 21:45</div><div class="sched-info"><h4>Live Band</h4><p>Live set</p></div><span class="sched-tag tag-band">Live Band</span></div>
-      <div class="schedule-item"><div class="sched-time">21:45 – 22:15</div><div class="sched-info"><h4>Competition Finals — DJ Roman</h4><p>All 4 comp finals · Newcomer · Slow Blues · Fast Blues · Strictly</p></div><span class="sched-tag tag-comp">Comp</span></div>
+      <div class="schedule-item"><div class="sched-time">21:45 – 22:15</div><div class="sched-info"><h4>Competition Finals</h4><p>Open Fast Blues M&amp;M Finals · Open Strictly Finals · Spotlight performances (1.5 min per couple)</p></div><span class="sched-tag tag-comp">Comp</span></div>
       <div class="schedule-item"><div class="sched-time">22:15 – 23:00</div><div class="sched-info"><h4>Live Band</h4><p>Post-comp celebration set</p></div><span class="sched-tag tag-band">Live Band</span></div>
       <div class="schedule-item"><div class="sched-time">23:00 – 23:30</div><div class="sched-info"><h4>DJ Set</h4><p></p></div><span class="sched-tag tag-dj">DJ</span></div>
       <div class="schedule-item"><div class="sched-time">23:30 – 00:30</div><div class="sched-info"><h4>Live Band</h4><p>Late night set</p></div><span class="sched-tag tag-band">Live Band</span></div>
@@ -708,7 +708,7 @@
 
     <!-- SUNDAY -->
     <div class="schedule-list" id="day-sun" style="display:none">
-      <div class="schedule-item"><div class="sched-time">Morning</div><div class="sched-info"><h4>Private Lessons — Book With Instructors &amp; Guests</h4><p>First come, first served · Individually priced · 4 raffle winners announced (2 leads + 2 follows from Thu &amp; Fri)</p></div><span class="sched-tag tag-private">Privates</span></div>
+      <div class="schedule-item"><div class="sched-time">Morning</div><div class="sched-info"><h4>Private Lessons — Book With Instructors &amp; Guests</h4><p>First come, first served · <a href="https://docs.google.com/document/d/1HbMqH3Xsp4wypSk1Sy7OsUDECFcKrS9ONEwOdY-SyZU/edit?usp=sharing" target="_blank" rel="noopener" style="color:var(--gold)">Learn more about privates</a></p></div><span class="sched-tag tag-private">Privates</span></div>
       <div class="schedule-item"><div class="sched-time">Evening</div><div class="sched-info"><h4>Closing Social — Hong Mai Ballroom</h4><p>Final night of dancing · Dance til midnight</p></div><span class="sched-tag tag-social">Social</span></div>
       <div class="schedule-item"><div class="sched-time">20:00 – 21:00</div><div class="sched-info"><h4>DJ Set</h4><p></p></div><span class="sched-tag tag-dj">DJ</span></div>
       <div class="schedule-item"><div class="sched-time">21:00 – 21:45</div><div class="sched-info"><h4>Live Band</h4><p>Live set</p></div><span class="sched-tag tag-band">Live Band</span></div>
@@ -727,32 +727,52 @@
       <span class="section-tag">Show Your Moves</span>
       <h2 class="section-title">Com<em>petitions</em></h2>
       <div class="section-line"></div>
-      <p class="section-subtitle">Four competitions — prelims Saturday at 5pm, all finals Saturday evening. Competition DJ: Roman.</p>
+      <p class="section-subtitle">Four competitions across the weekend — 6 couple finalists each, 1.5-minute spotlight finals. Open to all experience levels (except Newcomer).</p>
     </div>
-    <div class="comps-grid">
+    <div class="comps-grid" style="grid-template-columns:repeat(4,1fr);">
       <div class="comp-card">
         <div class="comp-icon">🌱</div>
         <h3>Newcomer Mix &amp; Match</h3>
-        <p>For dancers who have never finaled in any competition. A welcoming, low-pressure entry point — celebrate your progress and meet new partners on the floor.</p>
-        <div class="comp-details"><strong>Eligibility:</strong> Never finaled in any competition<br><strong>Format:</strong> Mix &amp; Match (rotating partners)<br><strong>Prelims:</strong> Sat 17:00 · DJ: Roman<br><strong>Finals:</strong> Sat evening</div>
-      </div>
-      <div class="comp-card">
-        <div class="comp-icon">🌙</div>
-        <h3>Open Slow Blues M&amp;M</h3>
-        <p>Where connection, groove, and musicality take center stage. Open to all levels — show the judges your slow blues feeling.</p>
-        <div class="comp-details"><strong>Eligibility:</strong> Open to all<br><strong>Format:</strong> Mix &amp; Match (rotating partners)<br><strong>Prelims:</strong> Sat 17:00 · DJ: Roman<br><strong>Finals:</strong> Sat evening</div>
+        <p>A welcoming entry point for newer dancers. Celebrate your progress and meet new partners on the floor.</p>
+        <div class="comp-details">
+          <strong>When:</strong> Friday Night<br>
+          <strong>Eligibility:</strong> Never finaled · Under 2 years blues experience<br>
+          <strong>Format:</strong> Mix &amp; Match<br>
+          <strong>Finals:</strong> 6 couples · 1.5 min spotlight
+        </div>
       </div>
       <div class="comp-card">
         <div class="comp-icon">⚡</div>
         <h3>Open Fast Blues M&amp;M</h3>
-        <p>Turn up the tempo. Fast blues rewards energy, rhythm, and playfulness. Open to all — bring your best boogie and bounce.</p>
-        <div class="comp-details"><strong>Eligibility:</strong> Open to all<br><strong>Format:</strong> Mix &amp; Match (rotating partners)<br><strong>Prelims:</strong> Sat 17:00 · DJ: Roman<br><strong>Finals:</strong> Sat evening</div>
+        <p>Turn up the tempo. Energy, rhythm, and playfulness take center stage. Bring your best boogie and bounce.</p>
+        <div class="comp-details">
+          <strong>When:</strong> Saturday Afternoon<br>
+          <strong>Eligibility:</strong> Open to all<br>
+          <strong>Format:</strong> Mix &amp; Match<br>
+          <strong>Finals:</strong> 6 couples · 1.5 min spotlight
+        </div>
       </div>
       <div class="comp-card">
         <div class="comp-icon">💑</div>
         <h3>Open Strictly</h3>
-        <p>Compete with your own partner. A strictly blues format for established couples to show their chemistry and connection on the floor.</p>
-        <div class="comp-details"><strong>Eligibility:</strong> Open to all partnerships<br><strong>Format:</strong> Strictly (fixed partner)<br><strong>Prelims:</strong> Sat 17:00 · DJ: Roman<br><strong>Finals:</strong> Sat evening</div>
+        <p>Compete with your own partner and show your chemistry, connection, and expression on the floor.</p>
+        <div class="comp-details">
+          <strong>When:</strong> Saturday Late Night<br>
+          <strong>Eligibility:</strong> Open to all<br>
+          <strong>Format:</strong> Strictly (fixed partner)<br>
+          <strong>Finals:</strong> 6 couples · 1.5 min spotlight
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🌙</div>
+        <h3>Open Slow Blues M&amp;M</h3>
+        <p>Connection, groove, and musicality take center stage. Show the judges your slow blues feeling.</p>
+        <div class="comp-details">
+          <strong>When:</strong> Sunday Evening<br>
+          <strong>Eligibility:</strong> Open to all<br>
+          <strong>Format:</strong> Mix &amp; Match<br>
+          <strong>Finals:</strong> 6 couples · 1.5 min spotlight
+        </div>
       </div>
     </div>
   </div>
@@ -775,7 +795,7 @@
           <h3>Hong Mai Ballroom</h3>
           <p>Our home for the entire weekend — a beautiful ballroom on the 3rd floor with a spacious dance floor perfect for blues. All workshops, practice socials, competition prelims and finals, and all three evening socials take place right here.</p>
           <div class="venue-address">📍 75 Hong Mai, Hanoi (3rd Floor)</div>
-          <div class="venue-days">Thursday · Friday · Saturday</div>
+          <div class="venue-days">Friday · Saturday · Sunday</div>
         </div>
       </div>
     </div>
@@ -792,35 +812,35 @@
       <p class="section-subtitle">Secure your spot at HBX 2027. Spots are limited — don't miss out.</p>
     </div>
     <div class="reg-grid">
-      <div class="reg-card">
+      <div class="reg-card featured">
         <h3>Full Weekend Pass</h3>
         <div class="reg-price"><span>$</span>XXX</div>
         <p class="reg-desc">The complete HBX experience — workshops, socials, and competitions all weekend.</p>
         <ul class="reg-features">
-          <li>Thursday night opening social</li>
-          <li>Friday workshops &amp; practice social</li>
-          <li>Friday evening social</li>
-          <li>All 4 competition prelims &amp; finals</li>
-          <li>Saturday closing social</li>
+          <li>Friday night opening social</li>
+          <li>Saturday workshops &amp; practice social</li>
+          <li>Saturday evening social</li>
+          <li>All 4 competitions (prelims &amp; finals)</li>
+          <li>Sunday closing social</li>
         </ul>
-        <a href="#" class="btn-secondary" style="display:block;text-align:center">Register — Full Pass</a>
+        <a href="#" class="btn-primary" style="display:block;text-align:center">Register — Full Pass</a>
       </div>
-      <div class="reg-card featured">
-        <h3>Social Pass</h3>
+      <div class="reg-card">
+        <h3>Party Pass</h3>
         <div class="reg-price"><span>$</span>XXX</div>
         <p class="reg-desc">All three evening socials — dance the nights away all weekend long.</p>
         <ul class="reg-features">
-          <li>Thursday night opening social</li>
-          <li>Friday evening social &amp; comps</li>
-          <li>Saturday closing social</li>
+          <li>Friday night opening social</li>
+          <li>Saturday evening social &amp; comps</li>
+          <li>Sunday closing social</li>
           <li>Competition spectating</li>
         </ul>
-        <a href="#" class="btn-primary" style="display:block;text-align:center">Register — Social Pass</a>
+        <a href="#" class="btn-secondary" style="display:block;text-align:center">Register — Party Pass</a>
       </div>
     </div>
     <div class="privates-note">
       <h4>🎓 Level Up with Private Lessons</h4>
-      <p>HBX has been structured so that our instructors and special guests have free time built into the weekend — and one of the best ways to take your dancing to the next level is a private lesson. We <strong>highly encourage</strong> you to book private time with both our instructors and special guests. Private lesson costs are <strong>not included</strong> in the Full Pass or Party Pass — they are arranged and paid directly to the instructor or special guest. Reach out early, spots fill fast!</p>
+      <p>HBX has been structured so that our instructors and special guests have free time built into the weekend — and one of the best ways to take your dancing to the next level is a private lesson. We <strong>highly encourage</strong> you to book private time with both our instructors and special guests. Private lesson costs are <strong>not included</strong> in the Full Pass or Party Pass — they are arranged and paid directly to the instructor or special guest. Reach out early, spots fill fast! <a href="https://docs.google.com/document/d/1HbMqH3Xsp4wypSk1Sy7OsUDECFcKrS9ONEwOdY-SyZU/edit?usp=sharing" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700;">Learn more about private lessons →</a></p>
     </div>
   </div>
 </section>
@@ -881,7 +901,7 @@
       <p class="section-subtitle">HBX is supported by and proudly celebrates the blues and swing dance community across Asia.</p>
     </div>
     <div class="partners-grid">
-      <a href="#" class="partner-badge">Blues Dance Hanoi</a>
+      <a href="https://www.instagram.com/bluesdancehanoi/" target="_blank" rel="noopener" class="partner-badge">Blues Dance Hanoi</a>
     </div>
     <div class="partner-invite">
       <p>Interested in partnering with us, vending at the event, or working with HBX? We'd love to hear from you — <a href="https://www.instagram.com/hanoibluesexperience/" target="_blank" rel="noopener">reach out to us on Instagram</a>!</p>
@@ -932,16 +952,16 @@
       <div class="footer-col">
         <h4>Info</h4>
         <ul>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Code of Conduct</a></li>
-          <li><a href="#">Private Lessons</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="https://docs.google.com/document/d/1YkybTmNv37lG19dOLrbFLsLZtNFjmGFaZ-NvFTZpGhU/edit?usp=sharing" target="_blank" rel="noopener">FAQ</a></li>
+          <li><a href="https://docs.google.com/document/d/1Bp2MyciRL5wzW3iEXrvjpL-ViPFDaNuhxo3kYpi0vko/edit?usp=sharing" target="_blank" rel="noopener">Code of Conduct</a></li>
+          <li><a href="https://docs.google.com/document/d/1HbMqH3Xsp4wypSk1Sy7OsUDECFcKrS9ONEwOdY-SyZU/edit?usp=sharing" target="_blank" rel="noopener">Private Lessons</a></li>
+          <li><a href="mailto:hbxhanoibluesexperience@gmail.com">Contact Us</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Partners</h4>
         <ul>
-          <li><a href="#">Blues Dance Hanoi</a></li>
+          <li><a href="https://www.instagram.com/bluesdancehanoi/" target="_blank" rel="noopener">Blues Dance Hanoi</a></li>
         </ul>
       </div>
     </div>
