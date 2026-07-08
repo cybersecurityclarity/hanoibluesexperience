@@ -128,12 +128,15 @@
     .bio-toggle { background: none; border: none; color: var(--gold); font-size: 0.75rem; font-weight: 700; cursor: pointer; margin-top: 0.5rem; padding: 0; font-family: Arial, Helvetica, sans-serif; }
     .bio-toggle:hover { text-decoration: underline; }
 
-    /* DJ cards — same style but 1:1 photo */
+    /* DJ cards */
     .dj-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    /* Center the 3-card second row */
+    .dj-grid-row2 { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; }
+    .dj-grid-row2 .dj-card { width: calc(25% - 1.5rem * 3/4); flex-shrink: 0; }
     .dj-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; text-align: center; transition: transform 0.3s, border-color 0.3s; }
     .dj-card:hover { transform: translateY(-4px); border-color: rgba(218,37,29,0.4); }
     .dj-photo { width: 100%; aspect-ratio: 1; overflow: hidden; position: relative; }
-    .dj-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.4s; }
+    .dj-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; transition: transform 0.4s; }
     .dj-card:hover .dj-photo img { transform: scale(1.05); }
     .dj-mystery { width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, #1a1a1a, #252525, #1a1a1a); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; }
     .mystery-q { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: rgba(255,255,255,0.12); }
@@ -268,6 +271,7 @@
     @media (max-width: 1050px) {
       .comps-grid { grid-template-columns: repeat(2,1fr); }
       .dj-grid { grid-template-columns: repeat(3,1fr); }
+      .dj-grid-row2 .dj-card { width: calc(33.33% - 1rem); }
       .about-boxes { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 768px) {
@@ -278,6 +282,8 @@
       .hero-content { padding: 3rem 1.5rem; }
       .instructor-grid { grid-template-columns: 1fr; }
       .dj-grid { grid-template-columns: repeat(2,1fr); }
+      .dj-grid-row2 { flex-wrap: wrap; }
+      .dj-grid-row2 .dj-card { width: calc(50% - 0.75rem); }
       .about-boxes { grid-template-columns: repeat(2,1fr); }
       .venues-grid { grid-template-columns: 1fr; }
       .scs-days { grid-template-columns: 1fr; gap: 0.8rem; }
@@ -290,6 +296,7 @@
       .about-boxes { grid-template-columns: 1fr 1fr; }
       .comps-grid { grid-template-columns: 1fr; }
       .dj-grid { grid-template-columns: repeat(2,1fr); }
+      .dj-grid-row2 .dj-card { width: 100%; }
       .footer-top { grid-template-columns: 1fr; }
       .tab-btn { padding: 0.6rem 0.8rem; font-size: 0.7rem; }
       .people-grid { grid-template-columns: repeat(2,1fr) !important; }
@@ -383,7 +390,7 @@
       <h2 class="section-title">What Is <em>HBX?</em></h2>
       <div class="section-line"></div>
     </div>
-    <p class="about-intro">HBX 2027 is a weekend of connection, music, and community in the heart of Hanoi.</p>
+    <p class="about-intro">HBX 2027 is a blues dance workshop weekend with blues dance classes and competitions all in the name of the blues dance community in the heart of Hanoi.</p>
     <div class="about-boxes">
       <div class="about-box">
         <span class="box-icon">🌍</span>
@@ -436,7 +443,7 @@
       <span class="section-tag">The Talent</span>
       <h2 class="section-title">Artists, <em>DJs &amp; Guests</em></h2>
       <div class="section-line"></div>
-      <p class="section-subtitle">An international lineup of blues dance instructors, special guests, and DJs — gathered in Hanoi for one unforgettable weekend.</p>
+      <p class="section-subtitle">We are very blessed to have an international line up of instructors, DJs and special guests from all over the world for an unforgettable weekend!</p>
     </div>
     <div class="people-tabs">
       <button class="tab-btn active" onclick="switchTab('instructors', this)">Instructors</button>
@@ -487,19 +494,15 @@
         <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Guess who…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
         <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Stay tuned…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
         <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Coming soon!</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Who could it be?</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Guess who…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Stay tuned…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Coming soon!</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
       </div>
     </div>
 
     <!-- DJs -->
     <div class="tab-panel" id="tab-djs">
+      <!-- Row 1: 4 DJs -->
       <div class="dj-grid">
-        <!-- Viva Lin — Competition DJ, photo provided -->
         <div class="dj-card">
-          <div class="dj-photo"><img src="viva.jpg" alt="Viva Lin" /></div>
+          <div class="dj-photo"><img src="viva.jpg" alt="Viva Lin" style="object-position:center center;" /></div>
           <div class="dj-info">
             <div class="dj-name">Viva Lin</div>
             <div class="dj-flag">🇹🇼</div>
@@ -507,7 +510,6 @@
             <div class="dj-role">Competition DJ</div>
           </div>
         </div>
-        <!-- Xuan -->
         <div class="dj-card">
           <div class="dj-mystery"><div class="mystery-q">?</div></div>
           <div class="dj-info">
@@ -517,7 +519,6 @@
             <div class="dj-role">DJ</div>
           </div>
         </div>
-        <!-- Raj -->
         <div class="dj-card">
           <div class="dj-mystery"><div class="mystery-q">?</div></div>
           <div class="dj-info">
@@ -527,7 +528,6 @@
             <div class="dj-role">DJ</div>
           </div>
         </div>
-        <!-- Tune -->
         <div class="dj-card">
           <div class="dj-mystery"><div class="mystery-q">?</div></div>
           <div class="dj-info">
@@ -537,7 +537,9 @@
             <div class="dj-role">DJ</div>
           </div>
         </div>
-        <!-- Lexy -->
+      </div>
+      <!-- Row 2: 3 DJs centered -->
+      <div class="dj-grid-row2">
         <div class="dj-card">
           <div class="dj-mystery"><div class="mystery-q">?</div></div>
           <div class="dj-info">
@@ -547,7 +549,6 @@
             <div class="dj-role">DJ</div>
           </div>
         </div>
-        <!-- Yaling -->
         <div class="dj-card">
           <div class="dj-mystery"><div class="mystery-q">?</div></div>
           <div class="dj-info">
@@ -557,7 +558,6 @@
             <div class="dj-role">DJ</div>
           </div>
         </div>
-        <!-- Trang -->
         <div class="dj-card">
           <div class="dj-mystery"><div class="mystery-q">?</div></div>
           <div class="dj-info">
@@ -568,6 +568,69 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION -->
+<section id="registration">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Join Us</span>
+      <h2 class="section-title">Get Your <em>Pass</em></h2>
+      <div class="section-line"></div>
+      <p class="section-subtitle">All prices in Vietnamese Dong (VND). Register early to save!</p>
+    </div>
+    <div class="pricing-table-wrap">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Pass Type</th>
+            <th>Super Early Bird</th>
+            <th>Early Bird</th>
+            <th>Regular</th>
+            <th>At the Door</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Full Weekend Pass</td>
+            <td class="price-cell">2,400,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$94 USD</span></td>
+            <td class="price-cell">2,900,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$114 USD</span></td>
+            <td class="price-cell">3,400,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$133 USD</span></td>
+            <td class="price-cell">4,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$157 USD</span></td>
+          </tr>
+          <tr>
+            <td>Party Pass</td>
+            <td class="price-cell">1,500,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$59 USD</span></td>
+            <td class="price-cell">1,700,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$67 USD</span></td>
+            <td class="price-cell">2,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$78 USD</span></td>
+            <td class="price-cell">2,500,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$98 USD</span></td>
+          </tr>
+          <tr>
+            <td>Single Night</td>
+            <td class="dash-cell">—</td>
+            <td class="dash-cell">—</td>
+            <td class="price-cell">800,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$31 USD</span></td>
+            <td class="price-cell">800,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$31 USD</span></td>
+          </tr>
+          <tr>
+            <td>Competition Entry</td>
+            <td class="price-cell">400,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$16 USD</span></td>
+            <td class="price-cell">400,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$16 USD</span></td>
+            <td class="price-cell">400,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$16 USD</span></td>
+            <td class="price-cell">400,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$16 USD</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pricing-note">* Competition entry is separate from all passes and is a flat 400,000 VND at any tier.</p>
+    <div class="reg-opens-center">
+      <span class="btn-reg-opens">🗓 Registration Opens July 30th</span>
+    </div>
+    <div class="privates-note">
+      <h4>🎓 Level Up with Private Lessons</h4>
+      <p>HBX has been structured so that our instructors and special guests have free time built into the weekend — and one of the best ways to take your dancing to the next level is a private lesson. We highly encourage you to book private time with both our instructors and special guests. Private lesson costs are not included in any pass — they are arranged and paid directly to the instructor or special guest. Reach out early, spots fill fast! <a href="https://docs.google.com/document/d/1HbMqH3Xsp4wypSk1Sy7OsUDECFcKrS9ONEwOdY-SyZU/edit?usp=sharing" target="_blank" rel="noopener">Learn more about private lessons →</a></p>
     </div>
   </div>
 </section>
@@ -601,32 +664,24 @@
       <span class="section-tag">Show Your Moves</span>
       <h2 class="section-title">Com<em>petitions</em></h2>
       <div class="section-line"></div>
-      <p class="section-subtitle">Four competitions across the weekend — 6 couple finalists each, 1.5-minute spotlight finals. Competition entry is priced separately from your event pass.</p>
+      <p class="section-subtitle">We have 4 competitions at HBX with 6 finalists per competition. Finals are 1.5 minute spotlight performances. Competition entry is priced separately from your event pass.</p>
     </div>
     <div class="comps-grid">
       <div class="comp-card">
-        <div class="comp-icon">🌱</div>
-        <h3>Newcomer Mix &amp; Match</h3>
-        <p>A welcoming entry point for newer dancers — celebrate your progress and meet new partners.</p>
+        <h3>Newcomer Mix &amp; Match <span style="color:var(--gold);font-size:0.85em;">FREE :)</span></h3>
         <div class="comp-details"><strong>When:</strong> Friday Night<br><strong>Eligibility:</strong> Never finaled · Under 2 years experience<br><strong>Format:</strong> Mix &amp; Match<br><strong>Finals:</strong> 6 couples · 1.5 min spotlight</div>
       </div>
       <div class="comp-card">
-        <div class="comp-icon">⚡</div>
         <h3>Open Fast Blues M&amp;M</h3>
-        <p>Energy, rhythm, and playfulness take center stage. Bring your best boogie and bounce.</p>
-        <div class="comp-details"><strong>When:</strong> Saturday Afternoon<br><strong>Eligibility:</strong> Open to all<br><strong>Format:</strong> Mix &amp; Match<br><strong>Finals:</strong> 6 couples · 1.5 min spotlight</div>
+        <div class="comp-details"><strong>When:</strong> Friday Night<br><strong>Eligibility:</strong> Open to all<br><strong>Format:</strong> Mix &amp; Match<br><strong>Finals:</strong> 6 couples · 1.5 min spotlight</div>
       </div>
       <div class="comp-card">
-        <div class="comp-icon">💑</div>
         <h3>Open Strictly</h3>
-        <p>Compete with your own partner and show your chemistry and connection on the floor.</p>
-        <div class="comp-details"><strong>When:</strong> Saturday Late Night<br><strong>Eligibility:</strong> Open to all<br><strong>Format:</strong> Strictly (fixed partner)<br><strong>Finals:</strong> 6 couples · 1.5 min spotlight</div>
+        <div class="comp-details"><strong>When:</strong> Saturday Night<br><strong>Eligibility:</strong> Open to all<br><strong>Format:</strong> Strictly (fixed partner)<br><strong>Finals:</strong> 6 couples · 1.5 min spotlight</div>
       </div>
       <div class="comp-card">
-        <div class="comp-icon">🌙</div>
         <h3>Open Slow Blues M&amp;M</h3>
-        <p>Connection, groove, and musicality front and center. Show the judges your slow blues feeling.</p>
-        <div class="comp-details"><strong>When:</strong> Sunday Evening<br><strong>Eligibility:</strong> Open to all<br><strong>Format:</strong> Mix &amp; Match<br><strong>Finals:</strong> 6 couples · 1.5 min spotlight</div>
+        <div class="comp-details"><strong>When:</strong> Saturday Night<br><strong>Eligibility:</strong> Open to all<br><strong>Format:</strong> Mix &amp; Match<br><strong>Finals:</strong> 6 couples · 1.5 min spotlight</div>
       </div>
     </div>
     <div class="judges-strip">
@@ -651,7 +706,6 @@
         <div class="venue-body">
           <div class="venue-type">Friday Party · Saturday Classes · Sunday Classes · Sunday Party</div>
           <h3><a href="https://maps.app.goo.gl/s5VzDa56uWq5rT6HA" target="_blank" rel="noopener">Spring Salsa Dance Club</a></h3>
-          <p>One of Hanoi's most energetic and welcoming dance studios — rated 4.7 stars. Spring Salsa boasts a great floor, air-conditioning, and a warm community atmosphere. Home to our Friday party, Saturday workshops, and Sunday classes and closing party.</p>
           <div class="venue-address">📍 <a href="https://maps.app.goo.gl/s5VzDa56uWq5rT6HA" target="_blank" rel="noopener">132 P. Nguyễn Thái Học, Ba Đình, Hà Nội</a></div>
           <div class="venue-days">Friday · Saturday · Sunday</div>
         </div>
@@ -661,74 +715,10 @@
         <div class="venue-body">
           <div class="venue-type">Saturday Party</div>
           <h3><a href="https://maps.app.goo.gl/odoecbCgzt5k4g6D9" target="_blank" rel="noopener">Latin Soul Hanoi</a></h3>
-          <p>A beautiful 7th-floor dance space with an amazing sound system and a vibrant, enthusiastic community. Highly professional and supportive at every level — the perfect home for our Saturday night social party.</p>
           <div class="venue-address">📍 <a href="https://maps.app.goo.gl/odoecbCgzt5k4g6D9" target="_blank" rel="noopener">Tầng 7, 130 P.Trung Phụng, Văn Miếu – Quốc Tử Giám, Hà Nội</a></div>
           <div class="venue-days">Saturday Night Party</div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- REGISTRATION -->
-<section id="registration">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-tag">Join Us</span>
-      <h2 class="section-title">Get Your <em>Pass</em></h2>
-      <div class="section-line"></div>
-      <p class="section-subtitle">All prices in Vietnamese Dong (VND). Register early to save!</p>
-    </div>
-    <div class="pricing-table-wrap">
-      <table class="pricing-table">
-        <thead>
-          <tr>
-            <th>Pass Type</th>
-            <th>Super Early Bird</th>
-            <th>Early Bird</th>
-            <th>Regular</th>
-            <th>At the Door</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Full Weekend Pass</td>
-            <td class="price-cell">2,400,000 VND</td>
-            <td class="price-cell">2,900,000 VND</td>
-            <td class="price-cell">3,400,000 VND</td>
-            <td class="price-cell">4,000,000 VND</td>
-          </tr>
-          <tr>
-            <td>Party Pass</td>
-            <td class="price-cell">1,500,000 VND</td>
-            <td class="price-cell">1,700,000 VND</td>
-            <td class="price-cell">2,000,000 VND</td>
-            <td class="price-cell">2,500,000 VND</td>
-          </tr>
-          <tr>
-            <td>Single Night</td>
-            <td class="dash-cell">—</td>
-            <td class="dash-cell">—</td>
-            <td class="price-cell">800,000 VND</td>
-            <td class="price-cell">800,000 VND</td>
-          </tr>
-          <tr>
-            <td>Competition Entry</td>
-            <td class="price-cell">400,000 VND</td>
-            <td class="price-cell">400,000 VND</td>
-            <td class="price-cell">400,000 VND</td>
-            <td class="price-cell">400,000 VND</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="pricing-note">* Competition entry is separate from all passes and is a flat 400,000 VND at any tier.</p>
-    <div class="reg-opens-center">
-      <span class="btn-reg-opens">🗓 Registration Opens July 30th</span>
-    </div>
-    <div class="privates-note">
-      <h4>🎓 Level Up with Private Lessons</h4>
-      <p>HBX has been structured so that our instructors and special guests have free time built into the weekend — and one of the best ways to take your dancing to the next level is a private lesson. We highly encourage you to book private time with both our instructors and special guests. Private lesson costs are not included in any pass — they are arranged and paid directly to the instructor or special guest. Reach out early, spots fill fast! <a href="https://docs.google.com/document/d/1HbMqH3Xsp4wypSk1Sy7OsUDECFcKrS9ONEwOdY-SyZU/edit?usp=sharing" target="_blank" rel="noopener">Learn more about private lessons →</a></p>
     </div>
   </div>
 </section>
@@ -741,7 +731,7 @@
       <h2 class="section-title">Blues Dance <em>Playlists</em></h2>
       <div class="section-line"></div>
     </div>
-    <p class="playlist-intro">Curated blues dance playlists to help you explore different styles and tempos — from slow drags to uptempo stomps.</p>
+    <p class="playlist-intro">We believe at HBX that we're not just a blues dance but a place for dancers to get inspired so we put together some Blues Dance Playlists so that you and your scene can enjoy the music. These are songs accumulated from several sources and divided into the different blues dance idioms for casual listening, practice or for DJs to find some great songs. If you enjoy the playlists, please do us a favor and follow us on IG!</p>
     <div class="playlist-grid">
       <div class="playlist-card"><h3>All Blues Dance Music Collection</h3><iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5okmKcQNXVgIQyu0AM2t30?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
       <div class="playlist-card"><h3>Slow Drag Playlist</h3><iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4i5w3ncKGW3uiTepsPP0H6?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
