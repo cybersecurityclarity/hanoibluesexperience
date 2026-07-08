@@ -9,23 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --black: #000000;
-      --red: #DA251D;
-      --white: #FFFFFF;
-      --gold: #FFCD00;
-      --red-dark: #a01915;
-      --gray: #1a1a1a;
-      --gray-mid: #2e2e2e;
-      --text-muted: #999;
+      --black: #000000; --red: #DA251D; --white: #FFFFFF; --gold: #FFCD00;
+      --red-dark: #a01915; --gray: #1a1a1a; --gray-mid: #2e2e2e; --text-muted: #999;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { background: var(--black); color: var(--white); font-family: Arial, Helvetica, sans-serif; font-weight: 400; line-height: 1.6; overflow-x: hidden; padding-top: 88px; }
 
-    /* ── STICKY HEADER ── */
+    /* STICKY HEADER */
     .sticky-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
-
-    /* ── SOCIAL BAR ── */
     .social-bar { background: var(--red); padding: 0.45rem 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
     .social-bar-date { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.9); white-space: nowrap; padding-right: 1rem; border-right: 1px solid rgba(255,255,255,0.3); }
     .social-bar-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); white-space: nowrap; }
@@ -34,14 +26,13 @@
     .social-icon-link:hover { background: rgba(255,255,255,0.35); }
     .social-icon-link svg { width: 16px; height: 16px; fill: var(--white); }
 
-    /* ── NAV ── */
     nav { display: flex; align-items: center; padding: 0 1.5rem; background: rgba(0,0,0,0.97); border-bottom: 2px solid var(--red); min-height: 52px; position: relative; }
     .nav-logo { font-family: Arial, Helvetica, sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--gold); text-decoration: none; white-space: nowrap; padding-right: 1.2rem; border-right: 1px solid rgba(255,255,255,0.12); flex-shrink: 0; line-height: 52px; }
     .nav-logo span { color: var(--red); }
-    .nav-links { display: flex; gap: 0; list-style: none; align-items: center; margin-left: auto; flex-wrap: nowrap; }
-    .nav-links a { display: block; color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 0 0.75rem; line-height: 52px; white-space: nowrap; transition: color 0.2s; }
+    .nav-links { display: flex; list-style: none; align-items: center; margin-left: auto; flex-wrap: nowrap; }
+    .nav-links a { display: block; color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 0 0.65rem; line-height: 52px; white-space: nowrap; transition: color 0.2s; }
     .nav-links a:hover { color: var(--gold); }
-    .nav-cta { background: var(--red) !important; color: var(--white) !important; margin-left: 0.4rem; padding: 0.4rem 1rem !important; line-height: 1 !important; border-radius: 3px; align-self: center; font-size: 0.72rem !important; }
+    .nav-cta { background: var(--red) !important; color: var(--white) !important; margin-left: 0.4rem; padding: 0.38rem 0.85rem !important; line-height: 1 !important; border-radius: 3px; align-self: center; font-size: 0.68rem !important; }
     .nav-cta:hover { background: var(--red-dark) !important; }
     .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; margin-left: auto; padding: 8px; background: none; border: none; }
     .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: all 0.3s; }
@@ -50,12 +41,12 @@
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .nav-mobile { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #111; border-bottom: 2px solid var(--red); flex-direction: column; padding: 0.5rem 0 1rem; z-index: 999; }
     .nav-mobile.open { display: flex; }
-    .nav-mobile a { display: block; color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s, background 0.2s; }
-    .nav-mobile a:hover { color: var(--gold); background: rgba(255,255,255,0.04); }
-    .nav-mobile .mob-cta { background: var(--red); color: var(--white) !important; margin: 0.75rem 1.5rem 0; text-align: center; border-radius: 3px; border: none; }
+    .nav-mobile a { display: block; color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-mobile a:hover { color: var(--gold); }
+    .nav-mobile .mob-cta { background: var(--red); color: var(--white) !important; margin: 0.75rem 1.5rem 0; text-align: center; border-radius: 3px; }
 
-    /* ── HERO ── */
-    #home { min-height: 92vh; display: flex; align-items: stretch; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+    /* HERO */
+    #home { min-height: 92vh; display: flex; align-items: stretch; position: relative; overflow: hidden; }
     .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(218,37,29,0.13) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 20% 80%, rgba(255,205,0,0.06) 0%, transparent 60%); }
     .hero-bg::before { content: '★'; position: absolute; font-size: 30rem; color: rgba(255,205,0,0.025); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; line-height: 1; }
     .hero-lines { position: absolute; inset: 0; pointer-events: none; }
@@ -63,44 +54,35 @@
     .hero-lines::before { top: 35%; left: 5%; animation: shimmer 4s infinite; }
     .hero-lines::after { bottom: 35%; right: 5%; animation: shimmer 4s 2s infinite; }
     @keyframes shimmer { 0%,100%{opacity:0.2} 50%{opacity:0.6} }
-
-    /* Hero three-column layout */
     .hero-layout { display: flex; align-items: stretch; width: 100%; position: relative; z-index: 1; }
     .hero-dancer { flex: 0 0 22%; position: relative; overflow: hidden; }
-    .hero-dancer img { width: 100%; height: 100%; object-fit: cover; object-position: top center; opacity: 0.75; display: block; }
-    .hero-dancer::after { content: ''; position: absolute; inset: 0; }
-    .hero-dancer.left::after { background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, transparent 100%); }
-    .hero-dancer.right::after { background: linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 100%); }
-    .hero-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem; }
-
+    .hero-dancer img { width: 100%; height: 100%; object-fit: cover; object-position: top center; opacity: 0.78; display: block; }
+    .hero-dancer.left::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, transparent 100%); }
+    .hero-dancer.right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to left, rgba(0,0,0,0.55) 0%, transparent 100%); }
+    .hero-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem; text-align: center; }
     .hero-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 1rem; }
     .hero-eyebrow::before, .hero-eyebrow::after { content: ''; flex: 1; max-width: 50px; height: 1px; background: var(--gold); opacity: 0.5; }
-    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 7vw, 6.5rem); font-weight: 900; line-height: 0.92; margin-bottom: 0.8rem; letter-spacing: -0.02em; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 6rem); font-weight: 900; line-height: 0.92; margin-bottom: 0.8rem; letter-spacing: -0.02em; }
     .hero-title .t1 { display: block; color: var(--white); }
     .hero-title .t2 { display: block; color: var(--red); font-style: italic; }
     .hero-title .t3 { display: block; color: var(--gold); font-size: 0.42em; letter-spacing: 0.08em; font-style: normal; margin-top: 0.35em; font-weight: 700; font-family: Arial, Helvetica, sans-serif; }
-    .hero-featuring { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin: 0.8rem 0 0.4rem; }
-    .hero-names { font-family: 'Playfair Display', serif; font-size: clamp(0.9rem, 2vw, 1.2rem); font-weight: 700; color: var(--white); margin-bottom: 1.2rem; line-height: 1.4; }
-    .hero-meta { display: flex; align-items: center; justify-content: center; gap: 0.9rem; margin: 1rem 0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); flex-wrap: wrap; }
-    .hero-meta span { display: flex; align-items: center; gap: 0.35rem; }
-    .hero-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
-    .hero-stats { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .hero-featuring { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin: 1rem 0 0.3rem; }
+    .hero-names { font-family: 'Playfair Display', serif; font-size: clamp(0.85rem, 2vw, 1.15rem); font-weight: 700; color: var(--white); margin-bottom: 1.5rem; line-height: 1.4; }
+    .hero-stats { display: flex; justify-content: center; gap: 2rem; margin: 1rem 0 1.5rem; flex-wrap: wrap; }
     .hero-stat { text-align: center; }
     .hero-stat .num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--gold); line-height: 1; }
     .hero-stat .label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.25rem; }
-    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.2rem; }
-
-    .btn-primary { display: inline-block; background: var(--red); color: var(--white); padding: 0.85rem 2rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer; border-radius: 2px; }
-    .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); }
-    .btn-secondary { display: inline-block; border: 1px solid rgba(255,255,255,0.3); color: var(--white); padding: 0.85rem 2rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.2s; border-radius: 2px; }
-    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-    .btn-reg-opens { display: inline-block; background: transparent; border: 2px solid var(--gold); color: var(--gold); padding: 0.85rem 2rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; cursor: default; border-radius: 2px; }
-
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-reg-opens { display: inline-block; background: transparent; border: 2px solid var(--gold); color: var(--gold); padding: 0.85rem 2rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: 2px; }
+    .btn-secondary { display: inline-block; border: 1px solid rgba(255,255,255,0.3); color: var(--white); padding: 0.85rem 2rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s, color 0.2s; border-radius: 2px; }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-primary { display: inline-block; background: var(--red); color: var(--white); padding: 0.85rem 2rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; border-radius: 2px; border: none; cursor: pointer; }
+    .btn-primary:hover { background: var(--red-dark); }
     .scroll-hint { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.4rem; color: var(--text-muted); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; animation: bounce 2s infinite; z-index: 2; }
     .scroll-hint::after { content: '↓'; font-size: 1rem; }
     @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
 
-    /* ── SECTIONS ── */
+    /* SECTIONS */
     section { padding: 5rem 1.5rem; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
     .section-header { text-align: center; margin-bottom: 3rem; }
@@ -110,71 +92,69 @@
     .section-line { width: 50px; height: 2px; background: var(--red); margin: 1.2rem auto 0; }
     .section-subtitle { margin-top: 1rem; color: var(--text-muted); max-width: 580px; margin-left: auto; margin-right: auto; font-size: 0.9rem; }
 
-    /* ── ABOUT ── */
+    /* ABOUT — 8-box grid */
     #about { background: var(--gray); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
-    .about-text h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; }
-    .about-text p { color: rgba(255,255,255,0.78); margin-bottom: 1rem; font-size: 0.93rem; }
-    .about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
-    .value-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 1.1rem; transition: border-color 0.3s; }
-    .value-card:hover { border-color: rgba(218,37,29,0.4); }
-    .value-card .icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
-    .value-card h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
-    .value-card p { font-size: 0.78rem; color: var(--text-muted); margin: 0; }
-    .about-expect { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid var(--red); padding: 2rem; }
-    .about-expect h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.2rem; }
-    .expect-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-    .expect-list li { font-size: 0.9rem; color: rgba(255,255,255,0.82); line-height: 1.6; display: flex; align-items: flex-start; gap: 0.65rem; }
-    .expect-list li::before { content: '★'; color: var(--gold); font-size: 0.6rem; flex-shrink: 0; margin-top: 0.42em; }
+    .about-intro { text-align: center; color: rgba(255,255,255,0.75); font-size: 1rem; max-width: 680px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .about-boxes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+    .about-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-top: 3px solid var(--red); padding: 1.6rem 1.2rem; text-align: center; transition: transform 0.3s, border-color 0.3s; }
+    .about-box:hover { transform: translateY(-4px); border-color: rgba(218,37,29,0.5); }
+    .about-box .box-icon { font-size: 2.2rem; margin-bottom: 0.9rem; display: block; }
+    .about-box h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .about-box p { font-size: 0.82rem; color: rgba(255,255,255,0.62); line-height: 1.55; }
 
-    /* ── PEOPLE ── */
+    /* PEOPLE */
     #people { background: var(--black); }
-    .people-tabs { display: flex; gap: 0; margin-bottom: 2.5rem; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .people-tabs { display: flex; margin-bottom: 2.5rem; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
     .tab-btn { background: none; border: none; color: var(--text-muted); font-family: Arial, Helvetica, sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.65rem 1.5rem; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; }
     .tab-btn.active { color: var(--gold); border-bottom-color: var(--red); }
     .tab-btn:hover:not(.active) { color: var(--white); }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* Instructor cards (larger) */
+    /* Instructor cards */
     .instructor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
     .instructor-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
     .instructor-card:hover { transform: translateY(-4px); border-color: rgba(218,37,29,0.4); }
     .instructor-photo { width: 100%; aspect-ratio: 3/4; overflow: hidden; position: relative; }
     .instructor-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.4s; }
     .instructor-card:hover .instructor-photo img { transform: scale(1.04); }
-    .instructor-photo::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
     .instructor-info { padding: 1.4rem; }
     .instructor-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.2rem; }
     .instructor-info .inst-role { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 0.9rem; }
-    .instructor-bio { font-size: 0.82rem; color: rgba(255,255,255,0.68); line-height: 1.65; max-height: 180px; overflow: hidden; position: relative; }
-    .instructor-bio::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(to top, rgba(26,26,26,0.95), transparent); }
-    .bio-expand { display: none; }
-    .bio-toggle { background: none; border: none; color: var(--gold); font-size: 0.75rem; font-weight: 700; cursor: pointer; margin-top: 0.5rem; padding: 0; font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.05em; }
-    .bio-toggle:hover { text-decoration: underline; }
+    .instructor-bio { font-size: 0.82rem; color: rgba(255,255,255,0.68); line-height: 1.65; max-height: 130px; overflow: hidden; position: relative; }
+    .instructor-bio::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(to top, #1a1a1a, transparent); }
     .instructor-bio.expanded { max-height: none; }
     .instructor-bio.expanded::after { display: none; }
+    .bio-toggle { background: none; border: none; color: var(--gold); font-size: 0.75rem; font-weight: 700; cursor: pointer; margin-top: 0.5rem; padding: 0; font-family: Arial, Helvetica, sans-serif; }
+    .bio-toggle:hover { text-decoration: underline; }
 
-    /* Mystery / guest / DJ grids */
+    /* DJ cards — same style but 1:1 photo */
+    .dj-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .dj-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; text-align: center; transition: transform 0.3s, border-color 0.3s; }
+    .dj-card:hover { transform: translateY(-4px); border-color: rgba(218,37,29,0.4); }
+    .dj-photo { width: 100%; aspect-ratio: 1; overflow: hidden; position: relative; }
+    .dj-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform 0.4s; }
+    .dj-card:hover .dj-photo img { transform: scale(1.05); }
+    .dj-mystery { width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, #1a1a1a, #252525, #1a1a1a); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; }
+    .mystery-q { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: rgba(255,255,255,0.12); }
+    .dj-info { padding: 0.9rem 0.8rem; }
+    .dj-info .dj-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .dj-info .dj-flag { font-size: 1.2rem; }
+    .dj-info .dj-origin { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.15rem; }
+    .dj-info .dj-role { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-top: 0.2rem; }
+
+    /* Mystery person cards */
     .people-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; }
     .person-card { text-align: center; transition: transform 0.3s; }
     .person-card:hover { transform: translateY(-4px); }
-    .person-photo { width: 100%; aspect-ratio: 1; background: var(--gray-mid); border: 1px solid rgba(255,255,255,0.08); margin-bottom: 0.8rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .person-photo::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--red), var(--gold)); transform: scaleX(0); transition: transform 0.3s; }
-    .person-card:hover .person-photo::after { transform: scaleX(1); }
-    .mystery-photo { background: linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1a1a1a 100%) !important; border: 2px dashed rgba(255,255,255,0.12) !important; }
-    .mystery-q { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.13); line-height: 1; }
-    .person-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.15rem; }
-    .mystery-name { color: rgba(255,255,255,0.38) !important; font-style: italic; }
+    .person-photo { width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, #1a1a1a, #252525, #1a1a1a); border: 2px dashed rgba(255,255,255,0.12); margin-bottom: 0.8rem; display: flex; align-items: center; justify-content: center; }
+    .person-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.15rem; color: rgba(255,255,255,0.38); font-style: italic; }
     .person-role { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
     .person-from { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.12rem; }
     .mystery-announce { background: rgba(218,37,29,0.07); border: 1px solid rgba(218,37,29,0.22); border-left: 3px solid var(--red); padding: 0.9rem 1.2rem; margin-bottom: 1.8rem; font-size: 0.86rem; color: rgba(255,255,255,0.8); }
     .mystery-announce a { color: var(--gold); font-weight: 700; text-decoration: none; }
-    .judges-strip { margin-top: 2.5rem; padding: 1.2rem 1.8rem; background: rgba(255,205,0,0.05); border: 1px solid rgba(255,205,0,0.18); display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-    .judges-strip h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
-    .judge-list { font-size: 0.86rem; color: rgba(255,255,255,0.72); }
 
-    /* ── SCHEDULE ── */
+    /* SCHEDULE */
     #schedule { background: var(--gray); }
     .schedule-coming-soon { max-width: 700px; margin: 0 auto; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.09); border-top: 3px solid var(--red); padding: 3rem 2rem; }
     .scs-icon { font-size: 2.5rem; margin-bottom: 1rem; }
@@ -186,59 +166,61 @@
     .scs-day-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
     .scs-day-desc { font-size: 0.82rem; color: rgba(255,255,255,0.58); line-height: 1.5; }
 
-    /* ── COMPETITIONS ── */
+    /* COMPETITIONS */
     #competitions { background: var(--black); }
-    .comps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+    .comps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
     .comp-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 1.8rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
     .comp-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--red), var(--gold)); }
     .comp-card:hover { border-color: rgba(218,37,29,0.4); transform: translateY(-3px); }
     .comp-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
-    .comp-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .comp-card p { font-size: 0.82rem; color: rgba(255,255,255,0.62); line-height: 1.6; margin-bottom: 0.8rem; }
-    .comp-details { font-size: 0.76rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.07); padding-top: 0.9rem; margin-top: 0.7rem; line-height: 1.9; }
+    .comp-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .comp-card p { font-size: 0.8rem; color: rgba(255,255,255,0.62); line-height: 1.6; margin-bottom: 0.8rem; }
+    .comp-details { font-size: 0.74rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.07); padding-top: 0.9rem; line-height: 1.9; }
     .comp-details strong { color: var(--gold); font-weight: 700; }
+    .judges-strip { padding: 1.4rem 2rem; background: rgba(255,205,0,0.05); border: 1px solid rgba(255,205,0,0.18); display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .judges-strip h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+    .judge-list { font-size: 0.86rem; color: rgba(255,255,255,0.72); }
 
-    /* ── VENUES ── */
+    /* VENUES */
     #venues { background: var(--gray); }
     .venues-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
     .venue-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
     .venue-card:hover { border-color: rgba(218,37,29,0.35); transform: translateY(-3px); }
-    .venue-img { width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative; }
+    .venue-img { width: 100%; aspect-ratio: 16/9; overflow: hidden; }
     .venue-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
     .venue-card:hover .venue-img img { transform: scale(1.04); }
-    .venue-img-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--gray-mid); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase; }
-    .venue-img-placeholder .ph-icon { font-size: 2rem; opacity: 0.22; }
     .venue-body { padding: 1.5rem; }
     .venue-body h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .venue-body h3 a { color: var(--white); text-decoration: none; transition: color 0.2s; }
+    .venue-body h3 a:hover { color: var(--gold); }
     .venue-body .venue-type { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 0.65rem; }
     .venue-body p { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
-    .venue-address { font-size: 0.78rem; font-weight: 700; color: var(--gold); margin-top: 0.65rem; display: flex; align-items: flex-start; gap: 0.4rem; }
-    .venue-days { font-size: 0.7rem; color: rgba(255,255,255,0.45); margin-top: 0.35rem; letter-spacing: 0.05em; }
+    .venue-address { font-size: 0.78rem; font-weight: 700; color: var(--gold); margin-top: 0.65rem; }
+    .venue-address a { color: var(--gold); text-decoration: none; }
+    .venue-address a:hover { text-decoration: underline; }
+    .venue-days { font-size: 0.7rem; color: rgba(255,255,255,0.45); margin-top: 0.3rem; }
 
-    /* ── REGISTRATION ── */
+    /* REGISTRATION */
     #registration { background: var(--black); position: relative; overflow: hidden; }
     #registration::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(218,37,29,0.09) 0%, transparent 60%); pointer-events: none; }
-
-    /* Pricing table */
-    .pricing-table-wrap { position: relative; z-index: 1; overflow-x: auto; margin-bottom: 2rem; }
-    .pricing-table { width: 100%; border-collapse: collapse; min-width: 580px; }
-    .pricing-table th { background: var(--red); color: var(--white); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.9rem 1.2rem; text-align: center; white-space: nowrap; }
+    .pricing-table-wrap { position: relative; z-index: 1; overflow-x: auto; margin-bottom: 1.5rem; }
+    .pricing-table { width: 100%; border-collapse: collapse; min-width: 560px; }
+    .pricing-table th { background: var(--red); color: var(--white); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.9rem 1.1rem; text-align: center; white-space: nowrap; }
     .pricing-table th:first-child { text-align: left; background: var(--red-dark); }
-    .pricing-table td { padding: 0.85rem 1.2rem; font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.07); text-align: center; }
+    .pricing-table td { padding: 0.8rem 1.1rem; font-size: 0.86rem; border-bottom: 1px solid rgba(255,255,255,0.07); text-align: center; }
     .pricing-table td:first-child { text-align: left; font-weight: 700; color: var(--white); }
     .pricing-table tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
     .pricing-table tr:hover td { background: rgba(255,255,255,0.06); }
-    .pricing-table .price-cell { color: var(--gold); font-weight: 700; }
-    .pricing-table .dash-cell { color: var(--text-muted); }
+    .price-cell { color: var(--gold); font-weight: 700; }
+    .dash-cell { color: var(--text-muted); }
     .pricing-note { font-size: 0.78rem; color: var(--text-muted); text-align: center; margin-bottom: 1.5rem; position: relative; z-index: 1; }
     .reg-opens-center { text-align: center; margin: 1.5rem 0 2rem; position: relative; z-index: 1; }
-
     .privates-note { margin-top: 2rem; padding: 1.5rem 2rem; background: rgba(255,205,0,0.05); border: 1px solid rgba(255,205,0,0.18); text-align: center; position: relative; z-index: 1; }
     .privates-note h4 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; }
     .privates-note p { font-size: 0.84rem; color: rgba(255,255,255,0.65); max-width: 600px; margin: 0 auto; line-height: 1.7; }
     .privates-note a { color: var(--gold); font-weight: 700; text-decoration: none; }
 
-    /* ── PLAYLISTS ── */
+    /* PLAYLISTS */
     #playlists { background: var(--gray); }
     .playlist-intro { max-width: 680px; margin: 0 auto 2.5rem; text-align: center; font-size: 0.9rem; color: rgba(255,255,255,0.68); }
     .playlist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.8rem; }
@@ -246,16 +228,15 @@
     .playlist-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--red), var(--gold)); }
     .playlist-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.85rem; }
 
-    /* ── PARTNERS ── */
+    /* PARTNERS */
     #partners { background: var(--black); padding: 4rem 1.5rem; }
     .partners-grid { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2rem; }
     .partner-badge { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); padding: 0.75rem 1.4rem; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); text-decoration: none; transition: border-color 0.2s, color 0.2s; }
     .partner-badge:hover { border-color: var(--red); color: var(--white); }
     .partner-invite { margin-top: 1.8rem; text-align: center; font-size: 0.9rem; color: rgba(255,255,255,0.62); }
     .partner-invite a { color: var(--gold); font-weight: 700; text-decoration: none; }
-    .partner-invite a:hover { text-decoration: underline; }
 
-    /* ── BOTTOM SOCIAL BAR ── */
+    /* BOTTOM SOCIAL */
     .social-bar-footer { background: var(--red); padding: 2.5rem 1.5rem; text-align: center; }
     .social-bar-footer h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
     .social-bar-footer p { font-size: 0.84rem; color: rgba(255,255,255,0.82); margin-bottom: 1.5rem; }
@@ -267,7 +248,7 @@
     .sib-circle svg { width: 26px; height: 26px; fill: var(--white); }
     .sib-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer { background: #040404; border-top: 1px solid rgba(255,255,255,0.07); padding: 3.5rem 1.5rem 2rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
@@ -283,10 +264,11 @@
     .flag { width: 26px; height: 17px; background: var(--red); position: relative; flex-shrink: 0; }
     .flag::before { content: '★'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: var(--gold); font-size: 10px; line-height: 1; }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 1050px) {
       .comps-grid { grid-template-columns: repeat(2,1fr); }
-      .instructor-grid { grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+      .dj-grid { grid-template-columns: repeat(3,1fr); }
+      .about-boxes { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 768px) {
       body { padding-top: 82px; }
@@ -294,22 +276,22 @@
       .nav-hamburger { display: flex; }
       .hero-dancer { display: none; }
       .hero-content { padding: 3rem 1.5rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .about-values { grid-template-columns: 1fr 1fr; }
       .instructor-grid { grid-template-columns: 1fr; }
+      .dj-grid { grid-template-columns: repeat(2,1fr); }
+      .about-boxes { grid-template-columns: repeat(2,1fr); }
       .venues-grid { grid-template-columns: 1fr; }
       .scs-days { grid-template-columns: 1fr; gap: 0.8rem; }
       .comps-grid { grid-template-columns: 1fr 1fr; }
-      .people-grid[style] { grid-template-columns: repeat(2,1fr) !important; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .pricing-table th, .pricing-table td { padding: 0.6rem 0.8rem; font-size: 0.8rem; }
+      .people-grid[style] { grid-template-columns: repeat(2,1fr) !important; }
     }
     @media (max-width: 480px) {
       section { padding: 3.5rem 1.2rem; }
-      .about-values { grid-template-columns: 1fr; }
+      .about-boxes { grid-template-columns: 1fr 1fr; }
       .comps-grid { grid-template-columns: 1fr; }
+      .dj-grid { grid-template-columns: repeat(2,1fr); }
       .footer-top { grid-template-columns: 1fr; }
-      .tab-btn { padding: 0.6rem 0.9rem; font-size: 0.72rem; }
+      .tab-btn { padding: 0.6rem 0.8rem; font-size: 0.7rem; }
       .people-grid { grid-template-columns: repeat(2,1fr) !important; }
     }
   </style>
@@ -363,11 +345,9 @@
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
   <div class="hero-layout">
-    <!-- Left dancer: Damon -->
     <div class="hero-dancer left">
-      <img src="damon.jpg" alt="Damon Stone — Blues Dance Instructor" />
+      <img src="damon.jpg" alt="Damon Stone" />
     </div>
-    <!-- Center content -->
     <div class="hero-content">
       <div class="hero-eyebrow">Hanoi, Vietnam · January 22–24, 2027</div>
       <h1 class="hero-title">
@@ -377,13 +357,6 @@
       </h1>
       <div class="hero-featuring">Featuring</div>
       <div class="hero-names">Damon &amp; Kelsy Stone · Dexter Santos</div>
-      <div class="hero-meta">
-        <span>📅 Jan 22–24, 2027</span>
-        <span class="dot"></span>
-        <span>📍 Hanoi, Vietnam</span>
-        <span class="dot"></span>
-        <span>🎵 Blues Dance</span>
-      </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="num">3</div><div class="label">Days of Dancing</div></div>
         <div class="hero-stat"><div class="num">9+</div><div class="label">Instructors &amp; Guests</div></div>
@@ -395,9 +368,8 @@
         <a href="#about" class="btn-secondary">Learn More</a>
       </div>
     </div>
-    <!-- Right dancer: Dexter -->
     <div class="hero-dancer right">
-      <img src="dexter.jpg" alt="Dexter Santos — Blues Dance Instructor" />
+      <img src="dexter.jpg" alt="Dexter Santos" />
     </div>
   </div>
   <div class="scroll-hint">Scroll</div>
@@ -411,30 +383,47 @@
       <h2 class="section-title">What Is <em>HBX?</em></h2>
       <div class="section-line"></div>
     </div>
-    <div class="about-grid">
-      <div class="about-text">
-        <h3>Blues Dance comes to Hanoi</h3>
-        <p>The Hanoi Blues Experience (HBX) is a weekend blues dance event built around community, connection, and the deep feeling of the blues. Set against the backdrop of one of Southeast Asia's most vibrant cities, HBX 2027 brings together dancers, instructors, and DJs from across Asia and beyond for three nights of social dancing and unforgettable connection.</p>
-        <p>From Friday night opening socials to Sunday evening competitions and late-night dancing — every moment of HBX is designed with you in mind.</p>
-        <div class="about-values">
-          <div class="value-card"><div class="icon">💙</div><h4>Community First</h4><p>Built by and for the Southeast Asian blues dance community.</p></div>
-          <div class="value-card"><div class="icon">🎵</div><h4>Amazing Music</h4><p>Dance to the best blues music from top DJs all weekend long.</p></div>
-          <div class="value-card"><div class="icon">🌏</div><h4>Pan-Asian Talent</h4><p>Instructors, DJs, and dancers gathered from across Asia and the world.</p></div>
-          <div class="value-card"><div class="icon">🤝</div><h4>Welcoming &amp; Safe</h4><p>A space built on respect, consent, and the joy of dance.</p></div>
-        </div>
+    <p class="about-intro">HBX 2027 is a weekend of connection, music, and community in the heart of Hanoi.</p>
+    <div class="about-boxes">
+      <div class="about-box">
+        <span class="box-icon">🌍</span>
+        <h4>World-Class Talent</h4>
+        <p>3 of the best blues dance instructors in the world</p>
       </div>
-      <div class="about-expect">
-        <h3>What to Expect</h3>
-        <ul class="expect-list">
-          <li>A blues dance workshop weekend open to any and all experience levels — complete beginners are very welcome</li>
-          <li>International professional blues dance instructors teaching lessons catered towards social dancing</li>
-          <li>Community events including eating together, time to explore the amazing city of Hanoi, and plenty of social dancing until 2am</li>
-          <li>Some of the best DJs in Asia spinning the finest blues dance tunes all weekend long</li>
-          <li>Exciting competitions designed to inspire dancers and celebrate the joy of the dance</li>
-          <li>Blues dance parties going until 2am every night</li>
-          <li>Amazing competitions, high quality music from top-tier DJs, and productive classes that will genuinely help your dancing</li>
-          <li>An incredibly good time with great people in one of Asia's most vibrant cities</li>
-        </ul>
+      <div class="about-box">
+        <span class="box-icon">🎶</span>
+        <h4>Top-Tier Music</h4>
+        <p>6 amazing DJs from all over Asia spinning the finest blues tunes</p>
+      </div>
+      <div class="about-box">
+        <span class="box-icon">🏆</span>
+        <h4>4 Competitions</h4>
+        <p>Exciting battles to inspire dancers and celebrate the joy of blues dancing</p>
+      </div>
+      <div class="about-box">
+        <span class="box-icon">💃</span>
+        <h4>Social Dancing Until 2AM</h4>
+        <p>Three nights of non-stop dancing in a vibrant, welcoming space</p>
+      </div>
+      <div class="about-box">
+        <span class="box-icon">🍽️</span>
+        <h4>Community Dinners</h4>
+        <p>Shared meals to connect with dancers from across Asia</p>
+      </div>
+      <div class="about-box">
+        <span class="box-icon">📚</span>
+        <h4>2 Lunch &amp; Learns</h4>
+        <p>Bring your lunch and learn from top instructors about blues</p>
+      </div>
+      <div class="about-box">
+        <span class="box-icon">🤝</span>
+        <h4>Attendee-Focused</h4>
+        <p>A team dedicated to making sure you have an unforgettable experience</p>
+      </div>
+      <div class="about-box">
+        <span class="box-icon">🌟</span>
+        <h4>Beginner-Friendly</h4>
+        <p>Open to all levels, no experience needed, just a love for dance</p>
       </div>
     </div>
   </div>
@@ -458,49 +447,33 @@
     <!-- INSTRUCTORS -->
     <div class="tab-panel active" id="tab-instructors">
       <div class="instructor-grid">
-
         <div class="instructor-card">
-          <div class="instructor-photo">
-            <img src="damon.jpg" alt="Damon Stone" />
-          </div>
+          <div class="instructor-photo"><img src="damon.jpg" alt="Damon Stone" /></div>
           <div class="instructor-info">
             <h3>Damon Stone</h3>
             <div class="inst-role">Blues Instructor</div>
-            <div class="instructor-bio" id="bio-damon">
-              Damon has been dancing his entire life, starting with vernacular Jazz/Blues first taught to him at the tender age of six by his grandmother. After nearly a decade of learning at the heels of his elders, he went on and eventually studied numerous dance forms until coming full circle in 1995 to focus primarily on the history and styles of partner dances as his family danced them with a special focus on the Southern Blues styles from the Mississippi Delta region. He has studied the development of vernacular Jazz/Blues dance across the United States learning from a number of the original dancers. He is largely regarded as one of the foremost authorities on Blues idiom dance and has been interviewed as a dance historian in documentary, dissertation, podcast, radio, and newspaper. Damon has been a featured instructor at camps, festivals, and workshops around the world.
-            </div>
+            <div class="instructor-bio" id="bio-damon">Damon has been dancing his entire life, starting with vernacular Jazz/Blues first taught to him at the tender age of six by his grandmother. After nearly a decade of learning at the heels of his elders, he went on and eventually studied numerous dance forms until coming full circle in 1995 to focus primarily on the history and styles of partner dances as his family danced them with a special focus on the Southern Blues styles from the Mississippi Delta region. He has studied the development of vernacular Jazz/Blues dance across the United States learning from a number of the original dancers. He is largely regarded as one of the foremost authorities on Blues idiom dance and has been interviewed as a dance historian in documentary, dissertation, podcast, radio, and newspaper. Damon has been a featured instructor at camps, festivals, and workshops around the world.</div>
             <button class="bio-toggle" onclick="toggleBio('bio-damon', this)">Read more ↓</button>
           </div>
         </div>
-
         <div class="instructor-card">
-          <div class="instructor-photo">
-            <img src="kelsy.jpg" alt="Kelsy Stone" />
-          </div>
+          <div class="instructor-photo"><img src="kelsy.jpg" alt="Kelsy Stone" /></div>
           <div class="instructor-info">
             <h3>Kelsy Stone</h3>
             <div class="inst-role">Blues Instructor</div>
-            <div class="instructor-bio" id="bio-kelsy">
-              Kelsy brings her lifetime of dance training, a passion for vernacular dance, and a sharp eye for technique to the Blues dance world. She has brought her joy and knowledge of Blues idiom dances to some of the most important and high-profile events in the USA and across five continents, including but not limited to: bluesSHOUT!, The Experiment, Muse, Hearken the Blues, and Seoul Blues Dance Festival — serving as faculty, mentor, competition coordinator, and judge. Kelsy's critical eye and love of deep technique are tempered by her love of "dad jokes," getting lost in the music, and embracing of the ridiculous. She shows her appreciation of African American culture by speaking of the history of Blues idiom dance and taking her craft seriously, but never herself. She believes every mistake is an opportunity to learn, every class an opportunity to challenge, and every dance an opportunity to pay respect to those who came before.
-            </div>
+            <div class="instructor-bio" id="bio-kelsy">Kelsy brings her lifetime of dance training, a passion for vernacular dance, and a sharp eye for technique to the Blues dance world. She has brought her joy and knowledge of Blues idiom dances to some of the most important and high-profile events in the USA and across five continents, including but not limited to: bluesSHOUT!, The Experiment, Muse, Hearken the Blues, and Seoul Blues Dance Festival — serving as faculty, mentor, competition coordinator, and judge. Kelsy's critical eye and love of deep technique are tempered by her love of "dad jokes," getting lost in the music, and embracing of the ridiculous. She shows her appreciation of African American culture by speaking of the history of Blues idiom dance and taking her craft seriously, but never herself. She believes every mistake is an opportunity to learn, every class an opportunity to challenge, and every dance an opportunity to pay respect to those who came before.</div>
             <button class="bio-toggle" onclick="toggleBio('bio-kelsy', this)">Read more ↓</button>
           </div>
         </div>
-
         <div class="instructor-card">
-          <div class="instructor-photo">
-            <img src="dexter.jpg" alt="Dexter Santos" />
-          </div>
+          <div class="instructor-photo"><img src="dexter.jpg" alt="Dexter Santos" /></div>
           <div class="instructor-info">
             <h3>Dexter Santos</h3>
             <div class="inst-role">Blues Instructor</div>
-            <div class="instructor-bio" id="bio-dexter">
-              Dexter Santos discovered Blues dancing in 2005 in San Francisco, California and found himself immediately drawn to the rhythms and sounds of the Blues. With a background in Lindy Hop, Dexter has learned, studied, performed, and collaborated with leading figures in the global Blues dance community, earning a reputation as one of the most respected and engaging instructors in the international scene. Since the very first bluesSHOUT in St. Louis in 2007, Dexter has won first place in numerous Blues dancing competitions. In an unprecedented feat never duplicated, he won all four partnered competitions at bluesSHOUT 2010 in Austin, Texas. A particular class favourite, his Hound Dog routine — a solo Blues choreography danced to Big Mama Thornton's song — has been taught and performed with dancers around the world across four continents. As a teacher, Dexter aims to inspire dancers of all levels while preserving the cultural roots, historic identity, aesthetics, and art form of Blues dance.
-            </div>
+            <div class="instructor-bio" id="bio-dexter">Dexter Santos discovered Blues dancing in 2005 in San Francisco, California and found himself immediately drawn to the rhythms and sounds of the Blues. With a background in Lindy Hop, Dexter has learned, studied, performed, and collaborated with leading figures in the global Blues dance community, earning a reputation as one of the most respected and engaging instructors in the international scene. Since the very first bluesSHOUT in St. Louis in 2007, Dexter has won first place in numerous Blues dancing competitions. In an unprecedented feat never duplicated, he won all four partnered competitions at bluesSHOUT 2010 in Austin, Texas. A particular class favourite, his Hound Dog routine — a solo Blues choreography danced to Big Mama Thornton's song — has been taught and performed with dancers around the world across four continents. As a teacher, Dexter aims to inspire dancers of all levels while preserving the cultural roots, historic identity, aesthetics, and art form of Blues dance.</div>
             <button class="bio-toggle" onclick="toggleBio('bio-dexter', this)">Read more ↓</button>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -510,35 +483,91 @@
         🕵️ <strong>Special guests to be announced very soon!</strong> Follow us on <a href="https://www.instagram.com/hanoibluesexperience/" target="_blank" rel="noopener">Instagram</a> to find out who's joining us at HBX 2027.
       </div>
       <div class="people-grid" style="grid-template-columns:repeat(4,1fr);">
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Who could it be?</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Guess who…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Stay tuned…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Coming soon!</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Who could it be?</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Guess who…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Stay tuned…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Coming soon!</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
+        <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Who could it be?</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
+        <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Guess who…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
+        <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Stay tuned…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
+        <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Coming soon!</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
+        <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Who could it be?</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
+        <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Guess who…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
+        <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Stay tuned…</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
+        <div class="person-card"><div class="person-photo"><div class="mystery-q">?</div></div><div class="person-name">Coming soon!</div><div class="person-role">Special Guest</div><div class="person-from">TBA</div></div>
       </div>
     </div>
 
     <!-- DJs -->
     <div class="tab-panel" id="tab-djs">
-      <div class="mystery-announce">
-        🕵️ <strong>DJ lineup dropping very soon!</strong> Follow us on <a href="https://www.instagram.com/hanoibluesexperience/" target="_blank" rel="noopener">Instagram</a> to find out who'll be keeping the floor moving at HBX 2027.
+      <div class="dj-grid">
+        <!-- Viva Lin — Competition DJ, photo provided -->
+        <div class="dj-card">
+          <div class="dj-photo"><img src="viva.jpg" alt="Viva Lin" /></div>
+          <div class="dj-info">
+            <div class="dj-name">Viva Lin</div>
+            <div class="dj-flag">🇹🇼</div>
+            <div class="dj-origin">Taiwan</div>
+            <div class="dj-role">Competition DJ</div>
+          </div>
+        </div>
+        <!-- Xuan -->
+        <div class="dj-card">
+          <div class="dj-mystery"><div class="mystery-q">?</div></div>
+          <div class="dj-info">
+            <div class="dj-name">Xuan</div>
+            <div class="dj-flag">🇨🇳</div>
+            <div class="dj-origin">China</div>
+            <div class="dj-role">DJ</div>
+          </div>
+        </div>
+        <!-- Raj -->
+        <div class="dj-card">
+          <div class="dj-mystery"><div class="mystery-q">?</div></div>
+          <div class="dj-info">
+            <div class="dj-name">Raj</div>
+            <div class="dj-flag">🇲🇾</div>
+            <div class="dj-origin">Malaysia</div>
+            <div class="dj-role">DJ</div>
+          </div>
+        </div>
+        <!-- Tune -->
+        <div class="dj-card">
+          <div class="dj-mystery"><div class="mystery-q">?</div></div>
+          <div class="dj-info">
+            <div class="dj-name">Tune</div>
+            <div class="dj-flag">🇹🇭</div>
+            <div class="dj-origin">Thailand</div>
+            <div class="dj-role">DJ</div>
+          </div>
+        </div>
+        <!-- Lexy -->
+        <div class="dj-card">
+          <div class="dj-mystery"><div class="mystery-q">?</div></div>
+          <div class="dj-info">
+            <div class="dj-name">Lexy</div>
+            <div class="dj-flag">🇻🇳</div>
+            <div class="dj-origin">Vietnam</div>
+            <div class="dj-role">DJ</div>
+          </div>
+        </div>
+        <!-- Yaling -->
+        <div class="dj-card">
+          <div class="dj-mystery"><div class="mystery-q">?</div></div>
+          <div class="dj-info">
+            <div class="dj-name">Yaling</div>
+            <div class="dj-flag">🇹🇼</div>
+            <div class="dj-origin">Taiwan</div>
+            <div class="dj-role">DJ</div>
+          </div>
+        </div>
+        <!-- Trang -->
+        <div class="dj-card">
+          <div class="dj-mystery"><div class="mystery-q">?</div></div>
+          <div class="dj-info">
+            <div class="dj-name">Trang</div>
+            <div class="dj-flag">🇻🇳</div>
+            <div class="dj-origin">Vietnam</div>
+            <div class="dj-role">DJ</div>
+          </div>
+        </div>
       </div>
-      <div class="people-grid" style="grid-template-columns:repeat(3,1fr);">
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Who could it be?</div><div class="person-role">DJ</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Guess who…</div><div class="person-role">DJ</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Stay tuned…</div><div class="person-role">DJ</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Coming soon!</div><div class="person-role">DJ</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Who could it be?</div><div class="person-role">DJ</div><div class="person-from">TBA</div></div>
-        <div class="person-card"><div class="person-photo mystery-photo"><div class="mystery-q">?</div></div><div class="person-name mystery-name">Guess who…</div><div class="person-role">DJ</div><div class="person-from">TBA</div></div>
-      </div>
-    </div>
-
-    <div class="judges-strip">
-      <h4>🏆 Competition Judges</h4>
-      <div class="judge-list">TBD — Judges will be announced soon. Follow us on Instagram to stay updated.</div>
     </div>
   </div>
 </section>
@@ -557,18 +586,9 @@
       <p>You can expect amazing DJs spinning the best blues dance music, useful social blues dance classes for all levels, and plenty of time built in to eat, rest, and explore Hanoi.</p>
       <a href="https://www.instagram.com/hanoibluesexperience/" target="_blank" rel="noopener" class="scs-ig-link">Follow us on Instagram to keep track of all our announcements →</a>
       <div class="scs-days">
-        <div class="scs-day">
-          <div class="scs-day-label">Friday · Jan 22</div>
-          <div class="scs-day-desc">Opening Social Night · Dancing until 2am</div>
-        </div>
-        <div class="scs-day">
-          <div class="scs-day-label">Saturday · Jan 23</div>
-          <div class="scs-day-desc">Workshops · Competitions · Evening Social</div>
-        </div>
-        <div class="scs-day">
-          <div class="scs-day-label">Sunday · Jan 24</div>
-          <div class="scs-day-desc">Private Lessons · Closing Social Night</div>
-        </div>
+        <div class="scs-day"><div class="scs-day-label">Friday · Jan 22</div><div class="scs-day-desc">Opening Social Night · Dancing until 2am</div></div>
+        <div class="scs-day"><div class="scs-day-label">Saturday · Jan 23</div><div class="scs-day-desc">Workshops · Competitions · Evening Social</div></div>
+        <div class="scs-day"><div class="scs-day-label">Sunday · Jan 24</div><div class="scs-day-desc">Private Lessons · Closing Social Night</div></div>
       </div>
     </div>
   </div>
@@ -588,7 +608,7 @@
         <div class="comp-icon">🌱</div>
         <h3>Newcomer Mix &amp; Match</h3>
         <p>A welcoming entry point for newer dancers — celebrate your progress and meet new partners.</p>
-        <div class="comp-details"><strong>When:</strong> Friday Night<br><strong>Eligibility:</strong> Never finaled · Under 2 years blues experience<br><strong>Format:</strong> Mix &amp; Match<br><strong>Finals:</strong> 6 couples · 1.5 min spotlight</div>
+        <div class="comp-details"><strong>When:</strong> Friday Night<br><strong>Eligibility:</strong> Never finaled · Under 2 years experience<br><strong>Format:</strong> Mix &amp; Match<br><strong>Finals:</strong> 6 couples · 1.5 min spotlight</div>
       </div>
       <div class="comp-card">
         <div class="comp-icon">⚡</div>
@@ -609,6 +629,10 @@
         <div class="comp-details"><strong>When:</strong> Sunday Evening<br><strong>Eligibility:</strong> Open to all<br><strong>Format:</strong> Mix &amp; Match<br><strong>Finals:</strong> 6 couples · 1.5 min spotlight</div>
       </div>
     </div>
+    <div class="judges-strip">
+      <h4>🏆 Competition Judges</h4>
+      <div class="judge-list">TBD — Judges will be announced soon. Follow us on <a href="https://www.instagram.com/hanoibluesexperience/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;font-weight:700;">Instagram</a> to stay updated.</div>
+    </div>
   </div>
 </section>
 
@@ -622,35 +646,26 @@
       <p class="section-subtitle">Two of Hanoi's best dance spaces — chosen for their floors, atmosphere, and heart.</p>
     </div>
     <div class="venues-grid">
-
       <div class="venue-card">
-        <div class="venue-img-placeholder">
-          <div class="ph-icon">🏛️</div>
-          <span>Spring Salsa Dance Club — Photo Coming Soon</span>
-        </div>
+        <div class="venue-img"><img src="spring_salsa.jpg" alt="Spring Salsa Dance Club" /></div>
         <div class="venue-body">
           <div class="venue-type">Friday Party · Saturday Classes · Sunday Classes · Sunday Party</div>
-          <h3>Spring Salsa Dance Club</h3>
-          <p>One of Hanoi's most energetic and welcoming dance studios — rated 4.7 stars. Spring Salsa boasts a great floor, air-conditioning, and a genuinely warm community atmosphere. Home to our Friday party, Saturday workshops, and Sunday classes and closing party.</p>
-          <div class="venue-address">📍 132 P. Nguyễn Thái Học, Ba Đình, Hà Nội</div>
+          <h3><a href="https://maps.app.goo.gl/s5VzDa56uWq5rT6HA" target="_blank" rel="noopener">Spring Salsa Dance Club</a></h3>
+          <p>One of Hanoi's most energetic and welcoming dance studios — rated 4.7 stars. Spring Salsa boasts a great floor, air-conditioning, and a warm community atmosphere. Home to our Friday party, Saturday workshops, and Sunday classes and closing party.</p>
+          <div class="venue-address">📍 <a href="https://maps.app.goo.gl/s5VzDa56uWq5rT6HA" target="_blank" rel="noopener">132 P. Nguyễn Thái Học, Ba Đình, Hà Nội</a></div>
           <div class="venue-days">Friday · Saturday · Sunday</div>
         </div>
       </div>
-
       <div class="venue-card">
-        <div class="venue-img-placeholder">
-          <div class="ph-icon">🎵</div>
-          <span>Latin Soul Hanoi — Photo Coming Soon</span>
-        </div>
+        <div class="venue-img"><img src="latin_soul.jpg" alt="Latin Soul Hanoi" /></div>
         <div class="venue-body">
           <div class="venue-type">Saturday Party</div>
-          <h3>Latin Soul Hanoi</h3>
-          <p>A beautiful 7th-floor dance space with an amazing sound system and a young, enthusiastic community. Described by visitors as highly professional and supportive at every level — the perfect home for our Saturday night social party.</p>
-          <div class="venue-address">📍 Tầng 7, 130 P.Trung Phụng, Văn Miếu – Quốc Tử Giám, Hà Nội</div>
+          <h3><a href="https://maps.app.goo.gl/odoecbCgzt5k4g6D9" target="_blank" rel="noopener">Latin Soul Hanoi</a></h3>
+          <p>A beautiful 7th-floor dance space with an amazing sound system and a vibrant, enthusiastic community. Highly professional and supportive at every level — the perfect home for our Saturday night social party.</p>
+          <div class="venue-address">📍 <a href="https://maps.app.goo.gl/odoecbCgzt5k4g6D9" target="_blank" rel="noopener">Tầng 7, 130 P.Trung Phụng, Văn Miếu – Quốc Tử Giám, Hà Nội</a></div>
           <div class="venue-days">Saturday Night Party</div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -662,9 +677,8 @@
       <span class="section-tag">Join Us</span>
       <h2 class="section-title">Get Your <em>Pass</em></h2>
       <div class="section-line"></div>
-      <p class="section-subtitle">All prices in Vietnamese Dong (VND). Early bird pricing available — register early to save!</p>
+      <p class="section-subtitle">All prices in Vietnamese Dong (VND). Register early to save!</p>
     </div>
-
     <div class="pricing-table-wrap">
       <table class="pricing-table">
         <thead>
@@ -708,13 +722,10 @@
         </tbody>
       </table>
     </div>
-
     <p class="pricing-note">* Competition entry is separate from all passes and is a flat 400,000 VND at any tier.</p>
-
     <div class="reg-opens-center">
       <span class="btn-reg-opens">🗓 Registration Opens July 30th</span>
     </div>
-
     <div class="privates-note">
       <h4>🎓 Level Up with Private Lessons</h4>
       <p>HBX has been structured so that our instructors and special guests have free time built into the weekend — and one of the best ways to take your dancing to the next level is a private lesson. We highly encourage you to book private time with both our instructors and special guests. Private lesson costs are not included in any pass — they are arranged and paid directly to the instructor or special guest. Reach out early, spots fill fast! <a href="https://docs.google.com/document/d/1HbMqH3Xsp4wypSk1Sy7OsUDECFcKrS9ONEwOdY-SyZU/edit?usp=sharing" target="_blank" rel="noopener">Learn more about private lessons →</a></p>
@@ -732,30 +743,12 @@
     </div>
     <p class="playlist-intro">Curated blues dance playlists to help you explore different styles and tempos — from slow drags to uptempo stomps.</p>
     <div class="playlist-grid">
-      <div class="playlist-card">
-        <h3>All Blues Dance Music Collection</h3>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5okmKcQNXVgIQyu0AM2t30?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-      <div class="playlist-card">
-        <h3>Slow Drag Playlist</h3>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4i5w3ncKGW3uiTepsPP0H6?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-      <div class="playlist-card">
-        <h3>Chicago Triple Playlist</h3>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0a1AJJlzriRubIKBRMm1vg?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-      <div class="playlist-card">
-        <h3>Struttin Playlist</h3>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5Q2foQwFeq1XMNQt5MjhC9?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-      <div class="playlist-card">
-        <h3>Ballroomin Playlist</h3>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1AWti0Bi3HigxNd343ftBM?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-      <div class="playlist-card">
-        <h3>Jukin Playlist</h3>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1g9SvqgFViYCsENTl01uUC?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
+      <div class="playlist-card"><h3>All Blues Dance Music Collection</h3><iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5okmKcQNXVgIQyu0AM2t30?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+      <div class="playlist-card"><h3>Slow Drag Playlist</h3><iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4i5w3ncKGW3uiTepsPP0H6?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+      <div class="playlist-card"><h3>Chicago Triple Playlist</h3><iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0a1AJJlzriRubIKBRMm1vg?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+      <div class="playlist-card"><h3>Struttin Playlist</h3><iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5Q2foQwFeq1XMNQt5MjhC9?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+      <div class="playlist-card"><h3>Ballroomin Playlist</h3><iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1AWti0Bi3HigxNd343ftBM?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+      <div class="playlist-card"><h3>Jukin Playlist</h3><iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1g9SvqgFViYCsENTl01uUC?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
     </div>
   </div>
 </section>
@@ -840,10 +833,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2027 Hanoi Blues Experience (HBX). All rights reserved.</span>
-      <div class="footer-flag">
-        <div class="flag"></div>
-        <span>Made with love in Hanoi, Vietnam</span>
-      </div>
+      <div class="footer-flag"><div class="flag"></div><span>Made with love in Hanoi, Vietnam</span></div>
     </div>
   </div>
 </footer>
@@ -869,13 +859,8 @@
   });
   function toggleBio(id, btn) {
     const bio = document.getElementById(id);
-    if (bio.classList.contains('expanded')) {
-      bio.classList.remove('expanded');
-      btn.textContent = 'Read more ↓';
-    } else {
-      bio.classList.add('expanded');
-      btn.textContent = 'Read less ↑';
-    }
+    bio.classList.toggle('expanded');
+    btn.textContent = bio.classList.contains('expanded') ? 'Read less ↑' : 'Read more ↓';
   }
 </script>
 </body>
