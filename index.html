@@ -132,11 +132,9 @@
 
     /* DJ cards */
     .dj-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-    /* Center the 3-card second row — cards match exact column width of row 1 */
-    .dj-grid-row2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
-    .dj-grid-row2 .dj-card:nth-child(1) { grid-column: 1; }
-    .dj-grid-row2 .dj-card:nth-child(2) { grid-column: 2; }
-    .dj-grid-row2 .dj-card:nth-child(3) { grid-column: 3; }
+    /* Row 2: flex so 3 cards are centered with no 4th blank column */
+    .dj-grid-row2 { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; }
+    .dj-grid-row2 .dj-card { flex: 0 0 calc(25% - 1.125rem); }
     .dj-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; text-align: center; transition: transform 0.3s, border-color 0.3s; }
     .dj-card:hover { transform: translateY(-4px); border-color: rgba(218,37,29,0.4); }
     .dj-photo { width: 100%; aspect-ratio: 1; overflow: hidden; position: relative; }
@@ -220,6 +218,7 @@
     .pricing-table tr:hover td { background: rgba(255,255,255,0.06); }
     .price-cell { color: var(--gold); font-weight: 700; }
     .dash-cell { color: var(--text-muted); }
+    .deadline-row td { background: rgba(255,205,0,0.08) !important; border-top: 1px solid rgba(255,205,0,0.3); border-bottom: 1px solid rgba(255,205,0,0.3); }
     .pricing-note { font-size: 0.78rem; color: var(--text-muted); text-align: center; margin-bottom: 1.5rem; position: relative; z-index: 1; }
     .reg-opens-center { text-align: center; margin: 1.5rem 0 2rem; position: relative; z-index: 1; }
     .privates-note { margin-top: 2rem; padding: 1.5rem 2rem; background: rgba(255,205,0,0.05); border: 1px solid rgba(255,205,0,0.18); text-align: center; position: relative; z-index: 1; }
@@ -275,7 +274,7 @@
     @media (max-width: 1050px) {
       .comps-grid { grid-template-columns: repeat(2,1fr); }
       .dj-grid { grid-template-columns: repeat(3,1fr); }
-      .dj-grid-row2 { grid-template-columns: repeat(3,1fr); }
+      .dj-grid-row2 .dj-card { flex: 0 0 calc(33.33% - 1rem); }
       .about-boxes { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 768px) {
@@ -286,7 +285,8 @@
       .hero-content { padding: 3rem 1.5rem; }
       .instructor-grid { grid-template-columns: 1fr; }
       .dj-grid { grid-template-columns: repeat(2,1fr); }
-      .dj-grid-row2 { grid-template-columns: repeat(2,1fr); }
+      .dj-grid-row2 { flex-wrap: wrap; }
+      .dj-grid-row2 .dj-card { flex: 0 0 calc(50% - 0.75rem); }
       .about-boxes { grid-template-columns: repeat(2,1fr); }
       .venues-grid { grid-template-columns: 1fr; }
       .scs-days { grid-template-columns: 1fr; gap: 0.8rem; }
@@ -299,7 +299,7 @@
       .about-boxes { grid-template-columns: 1fr 1fr; }
       .comps-grid { grid-template-columns: 1fr; }
       .dj-grid { grid-template-columns: repeat(2,1fr); }
-      .dj-grid-row2 { grid-template-columns: repeat(2,1fr); }
+      .dj-grid-row2 .dj-card { flex: 0 0 calc(50% - 0.75rem); }
       .footer-top { grid-template-columns: 1fr; }
       .tab-btn { padding: 0.6rem 0.8rem; font-size: 0.7rem; }
       .people-grid { grid-template-columns: repeat(2,1fr) !important; }
@@ -324,10 +324,11 @@
   </div>
   <nav id="nav">
     <a href="#home" class="nav-logo">
-      <img src="logo.png" alt="HBX Hanoi Blues Experience" style="height:36px;width:auto;display:block;filter:brightness(1.05);" />
+      <img src="logo.png" alt="HBX" style="height:32px;width:auto;display:block;margin-right:0.6rem;" />
+      <span style="font-family:Arial,Helvetica,sans-serif;font-size:0.88rem;font-weight:700;color:var(--gold);white-space:nowrap;">HBX <span style="color:var(--red);">-</span> Hanoi Blues Experience</span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="https://register.hanoibluesexperience.com/" class="nav-cta" target="_blank" rel="noopener">Registration Opens July 30</a></li>
+      <li><span class="nav-cta" style="cursor:default;">Registration Opens July 30</span></li>
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#people">Artists</a></li>
@@ -340,7 +341,7 @@
       <span></span><span></span><span></span>
     </button>
     <div class="nav-mobile" id="mobileMenu">
-      <a href="https://register.hanoibluesexperience.com/" target="_blank" rel="noopener" class="mob-cta" onclick="closeMobileMenu()">Registration Opens July 30</a>
+      <span class="mob-cta" style="display:block;margin:0.75rem 1.5rem 0;text-align:center;border-radius:3px;padding:0.75rem 1.5rem;background:var(--red);color:var(--white);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Registration Opens July 30</span>
       <a href="#home" onclick="closeMobileMenu()">Home</a>
       <a href="#about" onclick="closeMobileMenu()">About</a>
       <a href="#people" onclick="closeMobileMenu()">Artists</a>
@@ -376,7 +377,7 @@
         <div class="hero-stat"><div class="num">2</div><div class="label">Venues</div></div>
       </div>
       <div class="hero-actions">
-        <a href="https://register.hanoibluesexperience.com/" target="_blank" rel="noopener" class="btn-reg-opens">Registration Opens July 30th</a>
+        <span class="btn-reg-opens">Registration Opens July 30th</span>
         <a href="#about" class="btn-secondary">Learn More</a>
       </div>
     </div>
@@ -534,7 +535,7 @@
           </div>
         </div>
         <div class="dj-card">
-          <div class="dj-photo"><img src="tune.jpg" alt="Tune" style="object-position:center top;" /></div>
+          <div class="dj-photo"><img src="tune.jpg" alt="Tune" style="object-position:center 20%;" /></div>
           <div class="dj-info">
             <div class="dj-name">Tune</div>
             <div class="dj-flag">🇹🇭</div>
@@ -564,7 +565,7 @@
           </div>
         </div>
         <div class="dj-card">
-          <div class="dj-photo"><img src="trang.jpg" alt="Trang" style="object-position:center top;" /></div>
+          <div class="dj-photo"><img src="trang.jpg" alt="Trang" style="object-position:center 25%;" /></div>
           <div class="dj-info">
             <div class="dj-name">Trang</div>
             <div class="dj-flag">🇻🇳</div>
@@ -591,47 +592,47 @@
         <thead>
           <tr>
             <th>Pass Type</th>
-            <th>Super Early Bird</th>
+            <th>Super Early Bird<br><span style="font-size:0.68rem;font-weight:400;opacity:0.85;">Group min. 6 dancers</span></th>
             <th>Early Bird</th>
             <th>Regular</th>
             <th>At the Door</th>
           </tr>
         </thead>
         <tbody>
+          <tr class="deadline-row">
+            <td style="color:var(--gold);font-weight:700;font-size:0.8rem;letter-spacing:0.05em;">📅 Registration Deadline</td>
+            <td style="color:var(--gold);font-weight:700;">August 10th</td>
+            <td style="color:var(--gold);font-weight:700;">September 11th</td>
+            <td class="dash-cell">—</td>
+            <td class="dash-cell">—</td>
+          </tr>
           <tr>
             <td>Full Weekend Pass</td>
-            <td class="price-cell">2,400,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$94 USD</span></td>
-            <td class="price-cell">2,900,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$114 USD</span></td>
-            <td class="price-cell">3,400,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$133 USD</span></td>
-            <td class="price-cell">4,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$157 USD</span></td>
+            <td class="price-cell">2,625,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$101 USD</span></td>
+            <td class="price-cell">2,975,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$114 USD</span></td>
+            <td class="price-cell">3,500,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$135 USD</span></td>
+            <td class="price-cell">4,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$156 USD</span></td>
           </tr>
           <tr>
             <td>Party Pass</td>
-            <td class="price-cell">1,500,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$59 USD</span></td>
-            <td class="price-cell">1,700,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$67 USD</span></td>
-            <td class="price-cell">2,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$78 USD</span></td>
-            <td class="price-cell">2,500,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$98 USD</span></td>
+            <td class="dash-cell">—</td>
+            <td class="price-cell">1,800,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$77 USD</span></td>
+            <td class="price-cell">2,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$67 USD</span></td>
+            <td class="price-cell">2,500,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$96 USD</span></td>
           </tr>
           <tr>
             <td>Single Night</td>
             <td class="dash-cell">—</td>
             <td class="dash-cell">—</td>
-            <td class="price-cell">800,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$31 USD</span></td>
-            <td class="price-cell">800,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$31 USD</span></td>
-          </tr>
-          <tr>
-            <td>Competition Entry</td>
-            <td class="price-cell">400,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$16 USD</span></td>
-            <td class="price-cell">400,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$16 USD</span></td>
-            <td class="price-cell">400,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$16 USD</span></td>
-            <td class="price-cell">400,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$16 USD</span></td>
+            <td class="price-cell">850,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$32 USD</span></td>
+            <td class="price-cell">900,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$35 USD</span></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="pricing-note">* Competition entry is separate from all passes and is a flat 400,000 VND at any tier.</p>
+    <p class="pricing-note">* Super Early Bird pricing requires a group of minimum 6 dancers. Competition entry is priced separately.</p>
     <div class="reg-opens-center">
-      <a href="https://register.hanoibluesexperience.com/" target="_blank" rel="noopener" class="btn-reg-opens">🗓 Registration Opens July 30th</a>
+      <span class="btn-reg-opens">🗓 Registration Opens July 30th</span>
     </div>
     <div class="privates-note">
       <h4>🎓 Level Up with Private Lessons</h4>
