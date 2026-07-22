@@ -304,6 +304,32 @@
       .tab-btn { padding: 0.6rem 0.8rem; font-size: 0.7rem; }
       .people-grid { grid-template-columns: repeat(2,1fr) !important; }
     }
+    /* PRE-PARTY */
+    #preparty { background: var(--black); }
+    .preparty-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+    .preparty-poster { position: relative; }
+    .preparty-poster img { width: 100%; display: block; border: 1px solid rgba(255,255,255,0.1); }
+    .preparty-content h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .preparty-content p { font-size: 0.92rem; color: rgba(255,255,255,0.75); line-height: 1.75; margin-bottom: 1.2rem; }
+    .preparty-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    .preparty-detail-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-left: 3px solid var(--red); padding: 1rem 1.2rem; }
+    .preparty-detail-box .detail-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.3rem; }
+    .preparty-detail-box .detail-value { font-size: 0.9rem; font-weight: 700; color: var(--white); line-height: 1.4; }
+    .preparty-pricing { background: rgba(255,205,0,0.06); border: 1px solid rgba(255,205,0,0.2); padding: 1.5rem; margin-top: 1.5rem; }
+    .preparty-pricing h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold); margin-bottom: 1rem; }
+    .preparty-price-row { display: flex; justify-content: space-between; align-items: center; padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .preparty-price-row:last-child { border-bottom: none; }
+    .preparty-price-row .p-label { font-size: 0.82rem; font-weight: 700; color: rgba(255,255,255,0.8); }
+    .preparty-price-row .p-price { font-size: 0.95rem; font-weight: 700; color: var(--gold); text-align: right; }
+    .preparty-price-row .p-price small { display: block; font-size: 0.72rem; color: var(--text-muted); font-weight: 400; }
+    .preparty-limited { font-size: 0.75rem; font-weight: 700; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.9rem; text-align: center; }
+    @media (max-width: 768px) {
+      .preparty-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .preparty-details { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .preparty-details { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -331,6 +357,7 @@
       <li><span class="nav-cta" style="cursor:default;">Registration Opens July 30</span></li>
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#preparty">Pre-Party</a></li>
       <li><a href="#people">Artists</a></li>
       <li><a href="#schedule">Schedule</a></li>
       <li><a href="#competitions">Comps</a></li>
@@ -344,6 +371,7 @@
       <span class="mob-cta" style="display:block;margin:0.75rem 1.5rem 0;text-align:center;border-radius:3px;padding:0.75rem 1.5rem;background:var(--red);color:var(--white);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Registration Opens July 30</span>
       <a href="#home" onclick="closeMobileMenu()">Home</a>
       <a href="#about" onclick="closeMobileMenu()">About</a>
+      <a href="#preparty" onclick="closeMobileMenu()">Pre-Party</a>
       <a href="#people" onclick="closeMobileMenu()">Artists</a>
       <a href="#schedule" onclick="closeMobileMenu()">Schedule</a>
       <a href="#competitions" onclick="closeMobileMenu()">Competitions</a>
@@ -437,6 +465,58 @@
         <span class="box-icon">🌟</span>
         <h4>Beginner-Friendly</h4>
         <p>Open to all levels, no experience needed, just a love for dance</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRE-PARTY -->
+<section id="preparty">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Thursday · January 21, 2027</span>
+      <h2 class="section-title">HBX <em>Pre-Party</em></h2>
+      <div class="section-line"></div>
+      <p class="section-subtitle">Kick off the HBX weekend a night early with live blues and warm Hanoi hospitality.</p>
+    </div>
+    <div class="preparty-grid">
+      <div class="preparty-poster">
+        <img src="preparty_1.jpg" alt="HBX Pre-Party — Cong Minh, Quoc Hung, Ngoc Tran" />
+      </div>
+      <div class="preparty-content">
+        <h3>You're Invited</h3>
+        <p>You are invited to our pre-party on Thursday, January 21st at Blake's House of Jazz, Blues Dance Hanoi's home. This beautiful venue has witnessed and helped Blues Dance Hanoi's community growth ever since our scene started — we'd love for you to experience why!</p>
+        <p>If you are coming to Hanoi early for HBX, we would love to welcome you to our "home"! We have an exciting pre-party featuring soulful blues by a fantastic live band, delicious drinks and our signature warm and friendly atmosphere.</p>
+        <div class="preparty-details">
+          <div class="preparty-detail-box">
+            <div class="detail-label">📅 Date</div>
+            <div class="detail-value">Thursday, January 21, 2027</div>
+          </div>
+          <div class="preparty-detail-box">
+            <div class="detail-label">🕘 Time</div>
+            <div class="detail-value">9:00 PM – 11:00 PM</div>
+          </div>
+          <div class="preparty-detail-box">
+            <div class="detail-label">📍 Venue</div>
+            <div class="detail-value">Blake's House of Jazz<br>64 Nguyen Huu Huan, Hanoi</div>
+          </div>
+          <div class="preparty-detail-box">
+            <div class="detail-label">🎸 Featuring</div>
+            <div class="detail-value">Live Blues Band:<br>Cong Minh · Quoc Hung · Ngoc Tran</div>
+          </div>
+        </div>
+        <div class="preparty-pricing">
+          <h4>🎟 Pre-Party Pricing</h4>
+          <div class="preparty-price-row">
+            <span class="p-label">Website Purchase</span>
+            <span class="p-price">400,000 VND<small>~$15 USD</small></span>
+          </div>
+          <div class="preparty-price-row">
+            <span class="p-label">At-the-Door Purchase</span>
+            <span class="p-price">550,000 VND<small>~$21 USD</small></span>
+          </div>
+          <div class="preparty-limited">⚠ Limited Tickets Available!</div>
+        </div>
       </div>
     </div>
   </div>
@@ -565,7 +645,7 @@
           </div>
         </div>
         <div class="dj-card">
-          <div class="dj-photo"><img src="trang.jpg" alt="Trang" style="object-position:center 25%;" /></div>
+          <div class="dj-photo"><img src="trang.jpg" alt="Trang" style="object-position:center 40%;" /></div>
           <div class="dj-info">
             <div class="dj-name">Trang</div>
             <div class="dj-flag">🇻🇳</div>
@@ -624,8 +704,8 @@
             <td>Single Night</td>
             <td class="dash-cell">—</td>
             <td class="dash-cell">—</td>
-            <td class="price-cell">850,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$32 USD</span></td>
-            <td class="price-cell">900,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$35 USD</span></td>
+            <td class="price-cell">1,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$38 USD</span></td>
+            <td class="price-cell">1,300,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$50 USD</span></td>
           </tr>
         </tbody>
       </table>
