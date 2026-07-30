@@ -288,7 +288,7 @@
       .dj-grid-row2 { flex-wrap: wrap; }
       .dj-grid-row2 .dj-card { flex: 0 0 calc(50% - 0.75rem); }
       .about-boxes { grid-template-columns: repeat(2,1fr); }
-      .venues-grid { grid-template-columns: 1fr; }
+      .venues-grid { grid-template-columns: 1fr !important; }
       .scs-days { grid-template-columns: 1fr; gap: 0.8rem; }
       .comps-grid { grid-template-columns: 1fr 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -337,7 +337,7 @@
 <!-- STICKY HEADER -->
 <div class="sticky-header">
   <div class="social-bar">
-    <div class="social-bar-date">January 22 – 24, 2027 · Hanoi, Vietnam</div>
+    <div class="social-bar-date">January 21 – 24, 2027 · Hanoi, Vietnam</div>
     <span class="social-bar-label">Follow Us On Socials</span>
     <div class="social-bar-icons">
       <a href="https://www.instagram.com/hanoibluesexperience/" target="_blank" rel="noopener" class="social-icon-link" aria-label="Instagram">
@@ -354,8 +354,9 @@
       <span style="font-family:Arial,Helvetica,sans-serif;font-size:0.88rem;font-weight:700;color:var(--gold);white-space:nowrap;">HBX <span style="color:var(--red);">-</span> Hanoi Blues Experience</span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><span class="nav-cta" style="cursor:default;">Registration Opens July 30</span></li>
+      <li><a href="https://register.hanoibluesexperience.com/" class="nav-cta" target="_blank" rel="noopener">Register Here</a></li>
       <li><a href="#home">Home</a></li>
+      <li><a href="#registration">Passes</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#preparty">Pre-Party</a></li>
       <li><a href="#people">Artists</a></li>
@@ -368,8 +369,9 @@
       <span></span><span></span><span></span>
     </button>
     <div class="nav-mobile" id="mobileMenu">
-      <span class="mob-cta" style="display:block;margin:0.75rem 1.5rem 0;text-align:center;border-radius:3px;padding:0.75rem 1.5rem;background:var(--red);color:var(--white);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Registration Opens July 30</span>
+      <a href="https://register.hanoibluesexperience.com/" target="_blank" rel="noopener" class="mob-cta" onclick="closeMobileMenu()">Register Here</a>
       <a href="#home" onclick="closeMobileMenu()">Home</a>
+      <a href="#registration" onclick="closeMobileMenu()">Passes</a>
       <a href="#about" onclick="closeMobileMenu()">About</a>
       <a href="#preparty" onclick="closeMobileMenu()">Pre-Party</a>
       <a href="#people" onclick="closeMobileMenu()">Artists</a>
@@ -390,7 +392,7 @@
       <img src="damon.jpg" alt="Damon Stone" />
     </div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Hanoi, Vietnam · January 22–24, 2027</div>
+      <div class="hero-eyebrow">Hanoi, Vietnam · January 21–24, 2027</div>
       <h1 class="hero-title">
         <span class="t1">Hanoi Blues</span>
         <span class="t2">Experience</span>
@@ -405,7 +407,7 @@
         <div class="hero-stat"><div class="num">2</div><div class="label">Venues</div></div>
       </div>
       <div class="hero-actions">
-        <span class="btn-reg-opens">Registration Opens July 30th</span>
+        <a href="https://register.hanoibluesexperience.com/" target="_blank" rel="noopener" class="btn-reg-opens">Register Here</a>
         <a href="#about" class="btn-secondary">Learn More</a>
       </div>
     </div>
@@ -414,6 +416,68 @@
     </div>
   </div>
   <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- REGISTRATION -->
+<section id="registration">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">Get Your <em>Pass</em></h2>
+      <div class="section-line"></div>
+      <p class="section-subtitle">All prices in Vietnamese Dong (VND). Register early to save!</p>
+    </div>
+    <div class="pricing-table-wrap">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Pass Type</th>
+            <th>Super Early Bird<br><span style="font-size:0.68rem;font-weight:400;opacity:0.85;">Group min. 6 dancers</span></th>
+            <th>Early Bird</th>
+            <th>Regular</th>
+            <th>At the Door</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="deadline-row">
+            <td style="color:var(--gold);font-weight:700;font-size:0.8rem;letter-spacing:0.05em;">📅 Registration Deadline</td>
+            <td style="color:var(--gold);font-weight:700;">August 10th</td>
+            <td style="color:var(--gold);font-weight:700;">September 11th</td>
+            <td class="dash-cell">—</td>
+            <td class="dash-cell">—</td>
+          </tr>
+          <tr>
+            <td>Full Weekend Pass</td>
+            <td class="price-cell">2,625,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$101 USD</span></td>
+            <td class="price-cell">2,975,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$114 USD</span></td>
+            <td class="price-cell">3,500,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$135 USD</span></td>
+            <td class="price-cell">4,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$156 USD</span></td>
+          </tr>
+          <tr>
+            <td>Party Pass</td>
+            <td class="dash-cell">—</td>
+            <td class="price-cell">1,800,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$77 USD</span></td>
+            <td class="price-cell">2,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$67 USD</span></td>
+            <td class="price-cell">2,500,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$96 USD</span></td>
+          </tr>
+          <tr>
+            <td>Single Night</td>
+            <td class="dash-cell">—</td>
+            <td class="dash-cell">—</td>
+            <td class="price-cell">1,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$38 USD</span></td>
+            <td class="price-cell">1,300,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$50 USD</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pricing-note">* Super Early Bird pricing requires a group of minimum 6 dancers. Competition entry is priced separately.</p>
+    <div class="reg-opens-center">
+      <a href="https://register.hanoibluesexperience.com/" target="_blank" rel="noopener" class="btn-reg-opens">🗓 Register Here</a>
+    </div>
+    <div class="privates-note">
+      <h4>🎓 Level Up with Private Lessons</h4>
+      <p>Private lessons are one of the best ways to improve your dancing so we encourage you to book with our special guests. More info about private lessons coming soon!</p>
+    </div>
+  </div>
 </section>
 
 <!-- ABOUT -->
@@ -526,7 +590,7 @@
 <section id="people">
   <div class="section-inner">
     <div class="section-header">
-      <span class="section-tag">The Talent</span>
+      
       <h2 class="section-title">Artists, <em>DJs &amp; Guests</em></h2>
       <div class="section-line"></div>
       <p class="section-subtitle">We are very blessed to have an international line up of instructors, DJs and special guests from all over the world for an unforgettable weekend!</p>
@@ -658,74 +722,12 @@
   </div>
 </section>
 
-<!-- REGISTRATION -->
-<section id="registration">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-tag">Join Us</span>
-      <h2 class="section-title">Get Your <em>Pass</em></h2>
-      <div class="section-line"></div>
-      <p class="section-subtitle">All prices in Vietnamese Dong (VND). Register early to save!</p>
-    </div>
-    <div class="pricing-table-wrap">
-      <table class="pricing-table">
-        <thead>
-          <tr>
-            <th>Pass Type</th>
-            <th>Super Early Bird<br><span style="font-size:0.68rem;font-weight:400;opacity:0.85;">Group min. 6 dancers</span></th>
-            <th>Early Bird</th>
-            <th>Regular</th>
-            <th>At the Door</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="deadline-row">
-            <td style="color:var(--gold);font-weight:700;font-size:0.8rem;letter-spacing:0.05em;">📅 Registration Deadline</td>
-            <td style="color:var(--gold);font-weight:700;">August 10th</td>
-            <td style="color:var(--gold);font-weight:700;">September 11th</td>
-            <td class="dash-cell">—</td>
-            <td class="dash-cell">—</td>
-          </tr>
-          <tr>
-            <td>Full Weekend Pass</td>
-            <td class="price-cell">2,625,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$101 USD</span></td>
-            <td class="price-cell">2,975,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$114 USD</span></td>
-            <td class="price-cell">3,500,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$135 USD</span></td>
-            <td class="price-cell">4,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$156 USD</span></td>
-          </tr>
-          <tr>
-            <td>Party Pass</td>
-            <td class="dash-cell">—</td>
-            <td class="price-cell">1,800,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$67 USD</span></td>
-            <td class="price-cell">2,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$77 USD</span></td>
-            <td class="price-cell">2,500,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$96 USD</span></td>
-          </tr>
-          <tr>
-            <td>Single Night</td>
-            <td class="dash-cell">—</td>
-            <td class="dash-cell">—</td>
-            <td class="price-cell">1,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$38 USD</span></td>
-            <td class="price-cell">1,300,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$50 USD</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="pricing-note">* Super Early Bird pricing requires a group of minimum 6 dancers. Competition entry is priced separately.</p>
-    <div class="reg-opens-center">
-      <span class="btn-reg-opens">🗓 Registration Opens July 30th</span>
-    </div>
-    <div class="privates-note">
-      <h4>🎓 Level Up with Private Lessons</h4>
-      <p>Private lessons are one of the best ways to improve your dancing so we encourage you to book with our special guests. More info about private lessons coming soon!</p>
-    </div>
-  </div>
-</section>
 
 <!-- SCHEDULE -->
 <section id="schedule">
   <div class="section-inner">
     <div class="section-header">
-      <span class="section-tag">Plan Your Weekend</span>
+      
       <h2 class="section-title">The <em>Schedule</em></h2>
       <div class="section-line"></div>
     </div>
@@ -735,7 +737,7 @@
       <p>You can expect amazing DJs spinning the best blues dance music, useful social blues dance classes for all levels, and plenty of time built in to eat, rest, and explore Hanoi.</p>
       <a href="https://www.instagram.com/hanoibluesexperience/" target="_blank" rel="noopener" class="scs-ig-link">Follow us on Instagram to keep track of all our announcements →</a>
       <div class="scs-days">
-        <div class="scs-day"><div class="scs-day-label">Friday · Jan 22</div><div class="scs-day-desc">Opening Social Night · Dancing until 2am</div></div>
+        <div class="scs-day"><div class="scs-day-label">Thursday · Jan 21</div><div class="scs-day-desc">Opening Social Night · Dancing until 2am</div></div>
         <div class="scs-day"><div class="scs-day-label">Saturday · Jan 23</div><div class="scs-day-desc">Workshops · Competitions · Evening Social</div></div>
         <div class="scs-day"><div class="scs-day-label">Sunday · Jan 24</div><div class="scs-day-desc">Private Lessons · Closing Social Night</div></div>
       </div>
@@ -747,7 +749,7 @@
 <section id="competitions">
   <div class="section-inner">
     <div class="section-header">
-      <span class="section-tag">Show Your Moves</span>
+      
       <h2 class="section-title">Com<em>petitions</em></h2>
       <div class="section-line"></div>
       <p class="section-subtitle">We have 4 competitions at HBX with 6 finalists per competition. Finals are 1.5 minute spotlight performances. Competition entry is priced separately from your event pass.</p>
@@ -784,9 +786,18 @@
       <span class="section-tag">Where To Be</span>
       <h2 class="section-title">Our <em>Venues</em></h2>
       <div class="section-line"></div>
-      <p class="section-subtitle">Two of Hanoi's best dance spaces — chosen for their floors, atmosphere, and heart.</p>
+
     </div>
-    <div class="venues-grid">
+    <div class="venues-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="venue-card">
+        <div class="venue-img"><img src="blakes.jpg" alt="Blake's House of Jazz" /></div>
+        <div class="venue-body">
+          <div class="venue-type">Thursday Pre-Party</div>
+          <h3><a href="https://maps.app.goo.gl/GSePqMp4MtQx5HUK7" target="_blank" rel="noopener">Blake's House of Jazz</a></h3>
+          <div class="venue-address">📍 <a href="https://maps.app.goo.gl/GSePqMp4MtQx5HUK7" target="_blank" rel="noopener">64 P. Nguyễn Hữu Huân, Phố cổ Hà Nội, Hoàn Kiếm, Hà Nội</a></div>
+          <div class="venue-days">Thursday</div>
+        </div>
+      </div>
       <div class="venue-card">
         <div class="venue-img"><img src="spring_salsa.jpg" alt="Spring Salsa Dance Club" /></div>
         <div class="venue-body">
@@ -873,7 +884,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <a href="#home"><img src="logo.png" alt="HBX Hanoi Blues Experience" style="height:60px;width:auto;display:block;margin-bottom:1rem;" /></a>
-        <p>The Hanoi Blues Experience is a blues dance community event held January 22–24, 2027 in Hanoi, Vietnam. Built to connect dancers, celebrate the blues, and create an unforgettable weekend in one of Asia's most vibrant cities.</p>
+        <p>The Hanoi Blues Experience is a blues dance community event held January 21–24, 2027 in Hanoi, Vietnam. Built to connect dancers, celebrate the blues, and create an unforgettable weekend in one of Asia's most vibrant cities.</p>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
