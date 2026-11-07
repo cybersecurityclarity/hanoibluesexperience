@@ -57,6 +57,14 @@
     .hero-lines::after { bottom: 35%; right: 5%; animation: shimmer 4s 2s infinite; }
     @keyframes shimmer { 0%,100%{opacity:0.2} 50%{opacity:0.6} }
     .hero-layout { display: flex; align-items: stretch; width: 100%; position: relative; z-index: 1; }
+    .hero-dancer-pair { flex: 0 0 22%; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+    .hero-dancer-pair.left::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, transparent 100%); z-index: 1; pointer-events: none; }
+    .hero-dancer-pair.right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 100%); z-index: 1; pointer-events: none; }
+    .hero-dancer-pair .dancer-slot { flex: 1; overflow: hidden; position: relative; }
+    .hero-dancer-pair .dancer-slot::after { content: ''; position: absolute; left: 0; right: 0; height: 1px; background: rgba(255,255,255,0.08); bottom: 0; }
+    .hero-dancer-pair .dancer-slot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; opacity: 0.82; display: block; }
+    .hero-dancer-name { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2; padding: 0.3rem 0.5rem; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); text-align: center; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); }
+    /* legacy single dancer - kept for mobile fallback */
     .hero-dancer { flex: 0 0 22%; position: relative; overflow: hidden; }
     .hero-dancer img { width: 100%; height: 100%; object-fit: cover; object-position: top center; opacity: 0.78; display: block; }
     .hero-dancer.left::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, transparent 100%); }
@@ -282,6 +290,7 @@
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
       .hero-dancer { display: none; }
+      .hero-dancer-pair { display: none; }
       .hero-content { padding: 3rem 1.5rem; }
       .instructor-grid { grid-template-columns: repeat(2,1fr) !important; max-width: 100% !important; }
       .dj-grid { grid-template-columns: repeat(2,1fr); }
@@ -388,8 +397,16 @@
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
   <div class="hero-layout">
-    <div class="hero-dancer left">
-      <img src="damon.jpg" alt="Damon Stone" />
+    <!-- LEFT PAIR: Damon (top) + Kelsy (bottom) -->
+    <div class="hero-dancer-pair left">
+      <div class="dancer-slot">
+        <img src="damon.jpg" alt="Damon Stone" style="object-position:top center;" />
+        <div class="hero-dancer-name">Damon Stone</div>
+      </div>
+      <div class="dancer-slot">
+        <img src="kelsy.jpg" alt="Kelsy Stone" style="object-position:top center;" />
+        <div class="hero-dancer-name">Kelsy Stone</div>
+      </div>
     </div>
     <div class="hero-content">
       <div class="hero-eyebrow">Hanoi, Vietnam · January 21–24, 2027</div>
@@ -411,8 +428,16 @@
         <a href="#about" class="btn-secondary">Learn More</a>
       </div>
     </div>
-    <div class="hero-dancer right">
-      <img src="anni.jpg" alt="Annie Luo" />
+    <!-- RIGHT PAIR: Dexter (top) + Annie (bottom) -->
+    <div class="hero-dancer-pair right">
+      <div class="dancer-slot">
+        <img src="dexter.jpg" alt="Dexter Santos" style="object-position:top center;" />
+        <div class="hero-dancer-name">Dexter Santos</div>
+      </div>
+      <div class="dancer-slot">
+        <img src="anni.jpg" alt="Annie Luo" style="object-position:top center;" />
+        <div class="hero-dancer-name">Annie Luo</div>
+      </div>
     </div>
   </div>
   <div class="scroll-hint">Scroll</div>
