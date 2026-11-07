@@ -283,7 +283,7 @@
       .nav-hamburger { display: flex; }
       .hero-dancer { display: none; }
       .hero-content { padding: 3rem 1.5rem; }
-      .instructor-grid { grid-template-columns: 1fr; }
+      .instructor-grid { grid-template-columns: repeat(2,1fr) !important; max-width: 100% !important; }
       .dj-grid { grid-template-columns: repeat(2,1fr); }
       .dj-grid-row2 { flex-wrap: wrap; }
       .dj-grid-row2 .dj-card { flex: 0 0 calc(50% - 0.75rem); }
@@ -399,9 +399,9 @@
         <span class="t3">HBX 2027</span>
       </h1>
       <div class="hero-featuring">Featuring</div>
-      <div class="hero-names">Damon &amp; Kelsy Stone · Dexter Santos</div>
+      <div class="hero-names">Damon &amp; Kelsy Stone · Dexter Santos &amp; Annie Luo</div>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="num">3</div><div class="label">Days of Dancing</div></div>
+        <div class="hero-stat"><div class="num">4</div><div class="label">Days of Dancing</div></div>
         <div class="hero-stat"><div class="num">9+</div><div class="label">Instructors &amp; Guests</div></div>
         <div class="hero-stat"><div class="num">4</div><div class="label">Competitions</div></div>
         <div class="hero-stat"><div class="num">2</div><div class="label">Venues</div></div>
@@ -412,7 +412,7 @@
       </div>
     </div>
     <div class="hero-dancer right">
-      <img src="dexter.jpg" alt="Dexter Santos" />
+      <img src="anni.jpg" alt="Annie Luo" />
     </div>
   </div>
   <div class="scroll-hint">Scroll</div>
@@ -455,8 +455,8 @@
           <tr>
             <td>Party Pass</td>
             <td class="dash-cell">—</td>
-            <td class="price-cell">1,800,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$67 USD</span></td>
-            <td class="price-cell">2,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$77 USD</span></td>
+            <td class="price-cell">1,800,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$77 USD</span></td>
+            <td class="price-cell">2,000,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$67 USD</span></td>
             <td class="price-cell">2,500,000 VND<br><span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;">~$96 USD</span></td>
           </tr>
           <tr>
@@ -603,7 +603,7 @@
 
     <!-- INSTRUCTORS -->
     <div class="tab-panel active" id="tab-instructors">
-      <div class="instructor-grid">
+      <div class="instructor-grid" style="grid-template-columns:repeat(4,1fr);">
         <div class="instructor-card">
           <div class="instructor-photo"><img src="damon.jpg" alt="Damon Stone" /></div>
           <div class="instructor-info">
@@ -629,6 +629,15 @@
             <div class="inst-role">Blues Instructor</div>
             <div class="instructor-bio" id="bio-dexter">Dexter Santos discovered Blues dancing in 2005 in San Francisco, California and found himself immediately drawn to the rhythms and sounds of the Blues. With a background in Lindy Hop, Dexter has learned, studied, performed, and collaborated with leading figures in the global Blues dance community, earning a reputation as one of the most respected and engaging instructors in the international scene. Since the very first bluesSHOUT in St. Louis in 2007, Dexter has won first place in numerous Blues dancing competitions. In an unprecedented feat never duplicated, he won all four partnered competitions at bluesSHOUT 2010 in Austin, Texas. A particular class favourite, his Hound Dog routine — a solo Blues choreography danced to Big Mama Thornton's song — has been taught and performed with dancers around the world across four continents. As a teacher, Dexter aims to inspire dancers of all levels while preserving the cultural roots, historic identity, aesthetics, and art form of Blues dance.</div>
             <button class="bio-toggle" onclick="toggleBio('bio-dexter', this)">Read more ↓</button>
+          </div>
+        </div>
+        <div class="instructor-card">
+          <div class="instructor-photo"><img src="anni.jpg" alt="Annie Luo" style="object-position:center top;" /></div>
+          <div class="instructor-info">
+            <h3>Annie Luo</h3>
+            <div class="inst-role">Blues Instructor</div>
+            <div class="instructor-bio" id="bio-annie">Annie is the first who introduced this art form of African-American Blues dance to China from America in 2016. That same year, she founded Blues Beijing, followed by the Beijing Blues Bash event in 2018. Annie has been promoting Blues dance as well as history across China. She has learned from and collaborated with world-renowned Blues masters, and while also earning top-three placements in prestigious Blues competitions across the U.S., Europe, and Asia. Over almost 10 years of dedicated effort, she has built a comprehensive, structured, and up-to-date Blues dance teaching system, cultivated an exceptional instructor team, and actively encouraged new talent to join the community. At the same time, keeping learning is her longtime goal as a guest to African-American dancing and culture as a form of art. Annie's teaching style is humorous and approachable, creating a classroom atmosphere that balances fun with focus. At dance parties, she welcomes invitations from dancers of all roles — just don't offer her alcohol or desserts, as she's worked hard to avoid them!</div>
+            <button class="bio-toggle" onclick="toggleBio('bio-annie', this)">Read more ↓</button>
           </div>
         </div>
       </div>
@@ -709,11 +718,11 @@
           </div>
         </div>
         <div class="dj-card">
-          <div class="dj-photo"><img src="trang.jpg" alt="Trang" style="object-position:center 40%;" /></div>
+          <div class="dj-photo"><img src="mia.jpg" alt="Mia" style="object-position:center top;" /></div>
           <div class="dj-info">
-            <div class="dj-name">Trang</div>
-            <div class="dj-flag">🇻🇳</div>
-            <div class="dj-origin">Vietnam</div>
+            <div class="dj-name">Mia</div>
+            <div class="dj-flag">🇨🇳</div>
+            <div class="dj-origin">China</div>
             <div class="dj-role">DJ</div>
           </div>
         </div>
@@ -799,21 +808,21 @@
         </div>
       </div>
       <div class="venue-card">
-        <div class="venue-img"><img src="spring_salsa.jpg" alt="Spring Salsa Dance Club" /></div>
+        <div class="venue-img"><img src="latin_soul.jpg" alt="Latin Soul Hanoi" /></div>
         <div class="venue-body">
-          <div class="venue-type">Friday Party · Saturday Classes · Sunday Classes · Sunday Party</div>
-          <h3><a href="https://maps.app.goo.gl/s5VzDa56uWq5rT6HA" target="_blank" rel="noopener">Spring Salsa Dance Club</a></h3>
-          <div class="venue-address">📍 <a href="https://maps.app.goo.gl/s5VzDa56uWq5rT6HA" target="_blank" rel="noopener">132 P. Nguyễn Thái Học, Ba Đình, Hà Nội</a></div>
-          <div class="venue-days">Friday · Saturday · Sunday</div>
+          <div class="venue-type">Friday, Saturday &amp; Sunday Party</div>
+          <h3><a href="https://maps.app.goo.gl/odoecbCgzt5k4g6D9" target="_blank" rel="noopener">Latin Soul — 7th Floor</a></h3>
+          <div class="venue-address">📍 <a href="https://maps.app.goo.gl/odoecbCgzt5k4g6D9" target="_blank" rel="noopener">Tầng 7, 130 P.Trung Phụng, Văn Miếu – Quốc Tử Giám, Hà Nội</a></div>
+          <div class="venue-days">Friday · Saturday · Sunday Parties</div>
         </div>
       </div>
       <div class="venue-card">
-        <div class="venue-img"><img src="latin_soul.jpg" alt="Latin Soul Hanoi" /></div>
+        <div class="venue-img"><img src="latin_soul.jpg" alt="Dance More Studio" /></div>
         <div class="venue-body">
-          <div class="venue-type">Saturday Party</div>
-          <h3><a href="https://maps.app.goo.gl/odoecbCgzt5k4g6D9" target="_blank" rel="noopener">Latin Soul Hanoi</a></h3>
-          <div class="venue-address">📍 <a href="https://maps.app.goo.gl/odoecbCgzt5k4g6D9" target="_blank" rel="noopener">Tầng 7, 130 P.Trung Phụng, Văn Miếu – Quốc Tử Giám, Hà Nội</a></div>
-          <div class="venue-days">Saturday Night Party</div>
+          <div class="venue-type">Saturday &amp; Sunday Classes</div>
+          <h3><a href="https://maps.app.goo.gl/odoecbCgzt5k4g6D9" target="_blank" rel="noopener">Dance More Studio — 2nd Floor</a></h3>
+          <div class="venue-address">📍 <a href="https://maps.app.goo.gl/odoecbCgzt5k4g6D9" target="_blank" rel="noopener">Tầng 2, 130 P.Trung Phụng, Văn Miếu – Quốc Tử Giám, Hà Nội</a></div>
+          <div class="venue-days">Saturday · Sunday Classes</div>
         </div>
       </div>
     </div>
